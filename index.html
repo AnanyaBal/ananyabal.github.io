@@ -68,7 +68,7 @@
               <p>
                 <ul>
                   <!-- <li>Dec 2023: Presented my MSR Thesis Talk on 'Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions' (<a href="https://cmu.zoom.us/rec/share/I0sAtJUwshefDgruYBrt4Hdq3r7e9F6FlYYs4gq3G9EgYVcns1YtBDdO6NIG4Uls._e1PBGQn6qTPiPkW" View Recording</a> Password = 7cc?LX!B ). </a></li> -->
-                  <li>Dec 2023: Presented my MSR Thesis Talk on 'Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions' <a href="https://docs.google.com/presentation/d/1akSRO7dj0xm26uRHE9k_DhLBQ6cadu4V/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true"> (Slides)</a>.</li>
+                  <li>Dec 2023: Presented my MSR Thesis Talk on  <a href="https://drive.google.com/file/d/1TcHMTQai2XM32Okoj3vnhIGU5Gg_Gcoc/view?usp=drive_link"> Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions</a>.</li>
                   <li>Oct 2023: Presented paper on <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">Automated Void Detection</a> at IROS. </li>
                   <li>Oct 2023: Our paper <a href="https://arxiv.org/abs/2306.13329">on unsupervised deformable registration </a>was presented at IROS 2023.</li>
                   <li>May 2023: My work in Document Layout Understanding with vision and NLP during my internship at Fidelity Investments was granted a <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11657078">US Patent</a>. </li>
@@ -83,33 +83,87 @@
           </tr>
         </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <h2>Master's Thesis</h2>
+
+
+           
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://www.ri.cmu.edu/publications/neural-implicit-representations-for-medical-ultrasound-volumes-and-3d-anatomy-specific-reconstructions/">
+                  <span class="papertitle">Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions</span>
+                </a>
+                <br>
+                <strong>Ananya Bal</strong>
+                
+                <br>
+                <a href="https://drive.google.com/file/d/1TcHMTQai2XM32Okoj3vnhIGU5Gg_Gcoc/view?usp=drive_link">Document</a> | 
+                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true#slide=1">Slides</a> |
+                <a href="https://cmu.zoom.us/rec/share/I0sAtJUwshefDgruYBrt4Hdq3r7e9F6FlYYs4gq3G9EgYVcns1YtBDdO6NIG4Uls._e1PBGQn6qTPiPkW ">Presentation Video</a> (Passcode: 7cc?LX!B)
+                <br> 
+                <p></p>
+                <p style="text-align: justify;">
+                  Most Robotic Ultrasound Systems (RUSs) equipped with ultrasound-interpreting algorithms rely on building 3D reconstructions of the entire scanned region or specific anatomies. These 3D reconstructions are typically created via methods that compound or stack 2D tomographic ultrasound images using known poses of the ultrasound transducer with the latter requiring 2D or 3D segmentation. While fast, this class of methods has many shortcomings. It requires interpolation-based gap-filling or extensive compounding and still yields volumes that generate implausible novel views. Additionally, storing these volumes can be memory-intensive.
+                  <br>
+                  These challenges can be overcome with neural implicit learning which provides interpolation in unobserved gaps through a smooth learned function as well as a lighter representation for the volume in terms of memory. In this thesis, a neural implicit representation (NIR) based on the physics of ultrasound image formation is presented.
+                  <span id="dots">...</span>
+                  <span id="more" style="display: none;">
+                    With this NIR, a physically-grounded version of tissue reflectivity function (TRF) is learned by regression using observed intensities in ultrasound images. Additionally, this NIR also learns a spatially-varying point spread function (PSF) of the ultrasound imaging system to improve the photorealism of rendered images. The TRF learned through this method can handle contrasting observations from different viewing-directions due to a differentiable rendering function that incorporates the angle of incidence between ultrasound rays and the tissue interfaces in the scanned volume. It is a stable representation of the tissue volume that when combined with the viewing-direction, can produce true-to-orientation ultrasound images.
+                  <br>
+                  Given that many diagnostic and surgical applications, robotic or otherwise, require anatomy-specific 3D reconstructions, it is not sufficient to learn entire ultrasound volumes without discerning the required anatomies. To circumvent the use of traditional 3D segmentation methods that are computationally-heavy, I demonstrate that the obtained TRF can be used to learn a neural implicit shape representation for anatomies that are largely homogeneous. This is formulated as a weakly-supervised binary voxel occupancy function that is learned in parallel with the NIR. All these contributions are substantiated on simulated, phantom-acquired and live subject-acquired ultrasound images capturing blood vessels. Finally, an application for the anatomy-specific reconstruction is discussed in the context of physical simulations for deformation modeling of soft tissue. 
+                </span>
+                </p>
+                <button onclick="toggleReadMore()" style="cursor: pointer;">
+                  <span id="readMoreBtn">Read More</span>
+                </button>
+              </td>
+            </tr>
+            <script>
+              function toggleReadMore() {
+                var dots = document.getElementById("dots");
+                var moreText = document.getElementById("more");
+                var btnText = document.getElementById("readMoreBtn");
+          
+                if (dots.style.display === "none") {
+                  dots.style.display = "inline";
+                  moreText.style.display = "none";
+                  btnText.innerHTML = "Read More";
+                } else {
+                  dots.style.display = "none";
+                  moreText.style.display = "inline";
+                  btnText.innerHTML = "Read Less";
+                }
+              }
+            </script>
+          
+          </tbody></table>
+          <br>
+          
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <h2>Selected Projects</h2>
-    
-      
-            <tr onmouseout="unerf_stop()" onmouseover="unerf_start()">
+
+            <tr onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
               <td style="padding:1px;width:25%;vertical-align:top">
                 <div class="one">
                   <div class="two" id='unerf_image'><video  width=100% height=100% muted autoplay loop>
                   <source src="images/unerf-video.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                   </video></div>
-                  <img src='images/unerf.png' width="225">
+                  <img src='images/view_dep.png' width="225" style="padding-top: 15px;">
                 </div>
                 <script type="text/javascript">
-                  function unerf_start() {
+                  function unerf1_start() {
                     document.getElementById('unerf_image').style.opacity = "1";
                   }
       
-                  function unerf_stop() {
+                  function unerf1_stop() {
                     document.getElementById('unerf_image').style.opacity = "0";
                   }
-                  unerf_stop()
+                  unerf1_stop()
                 </script>
               </td>
               <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://arxiv.org/abs/2306.13332">
-                  <span class="papertitle">3D Anatomy Reconstruction and Improved Segmentation using Implicit Neural Representations for Ultrasound </span>
-                </a>
+            
+                  <span class="papertitle">Adding Viewing Direction-dependence to Ultra-NeRF</span>
+                
                 <br>
                 <strong>Ananya Bal</strong>,
                 Magdalena Wysocki,
@@ -117,230 +171,311 @@
                 John Galeotti,
                 Howie Choset
                 <br>
-                <em>Research under progress</em> &nbsp <font color="red"></font>
+                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true#slide=37">Slides</a> 
+                <br> 
+                <p></p>
+                <p >
+                  Incorporating viewing direction-dependence to Ultra-NeRF for rendering true-to-orientation reflectance in ultrasound images. A normal surface field is learned to supplement a modified rendering function.
+                </p>
+              </td>
+            </tr>
+      
+            <tr onmouseout="unerf2_stop()" onmouseover="unerf2_start()">
+              <td style="padding:1px;width:25%;vertical-align:top">
+                <div class="one">
+                  <div class="two" id='unerf_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/unerf-video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/3Drecon.png' width="225" style="padding-top: 15px;">
+                </div>
+                <script type="text/javascript">
+                  function unerf2_start() {
+                    document.getElementById('unerf_image').style.opacity = "1";
+                  }
+      
+                  function unerf2_stop() {
+                    document.getElementById('unerf_image').style.opacity = "0";
+                  }
+                  unerf2_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+               
+                  <span class="papertitle">Implicit Shape Representation for 3D Anatomy Reconstruction from Ultrasound Images </span>
+                
+                <br>
+                <strong>Ananya Bal</strong>,
+                Magdalena Wysocki,
+                Mohammad Farid Azampour,
+                John Galeotti,
+                Howie Choset
+                <br>
+                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true#slide=51">Slides</a> 
                 <br> 
                 <p></p>
                 <p>
-                Weakly supervised implicit reconstruction method which utilizes Ultrasound NeRF. Physics-inspired image augmentation for improving 2D segmentation.
+                Weakly supervised volumetric implicit shape representation method. Applied to 3D anatomy reconstruction from multi-view 2D ultrasound images trhough Ultra-NeRF.
                 </p>
               </td>
             </tr>
 
 
-      <tr onmouseout="NSF()" onmouseover="NSF_start()" >
-        <td style="padding:0px;width:25%;vertical-align:middle">
-          <div class="one">
-            <div class="two" id='NSF_image'><video  width=100% height=100% muted autoplay loop>
-            <source src="images/IROS_GA.png" type="video/mp4">
-            Your browser does not support the video tag.
-            </video></div>
-            <img src='images/IROS_GA.png' width="225">
-          </div>
-          <script type="text/javascript">
-            function NSF_start() {
-              document.getElementById('NSF_image').style.opacity = "1";
-            }
+            <tr onmouseout="unerf3_stop()" onmouseover="unerf3_start()">
+              <td style="padding:1px;width:25%;vertical-align:top">
+                <div class="one">
+                  <div class="two" id='unerf_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/unerf-video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/psf.png' width="225" style="padding-top: 15px;">
+                </div>
+                <script type="text/javascript">
+                  function unerf3_start() {
+                    document.getElementById('unerf_image').style.opacity = "1";
+                  }
+      
+                  function unerf3_stop() {
+                    document.getElementById('unerf_image').style.opacity = "0";
+                  }
+                  unerf3_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                
+                  <span class="papertitle">Ultra-NeRF++: Learning Imaging System Properties in addition to Scene Parameters</span>
+                
+                <br>
+                <strong>Ananya Bal</strong>,
+                Magdalena Wysocki,
+                Mohammad Farid Azampour,
+                John Galeotti,
+                Howie Choset
+                <br>
+                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true#slide=29">Slides</a> 
+                <br> 
+                <p></p>
+                <p>
+                Enhanced Ultra-NeRF by approximating spatially varying Point Spread Functions for the ultrasound imaging system in addition to the tissue reflectivity function of the scene. Network architecture also improved for rednering high-frequency artifacts.
+                </p>
+              </td>
+            </tr>
 
-            function NSF() {
-              document.getElementById('NSF_image').style.opacity = "0";
-            }
-            NSF()
-          </script>
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">
-            <span class="papertitle">Towards Automated Void Detection for Search and Rescue with 3D Perception <strong></strong></span>
-          </a>
-          <br>
-          <strong>Ananya Bal</strong>,
-          Ashutosh Gupta,
-          Pranav Goyal,
-          David Merrick,
-          Robin Murphy,
-          Howie Choset
-          <br>
-          <em>IROS</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-          <br>
-          <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">Paper</a> | 
-          <a href="https://drive.google.com/file/d/1eZUWeSbD16lksmu7lgs7m0_HfgZ2Izs6/view?usp=sharing">Poster</a> | 
-          <a href="https://youtu.be/2q1_Dw3VITU">Video</a>
-          <p></p>
-          <p>
-          A novel layering-based point cloud processing approach using NetVLAD and COLMAP for improved registration and void detection. 
-          </p>
-        </td>
-      </tr>
+
+            <tr onmouseout="NSF()" onmouseover="NSF_start()" >
+              <td style="padding:0px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <div class="two" id='NSF_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/IROS_GA.png" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/IROS_GA.png' width="225">
+                </div>
+                <script type="text/javascript">
+                  function NSF_start() {
+                    document.getElementById('NSF_image').style.opacity = "1";
+                  }
+
+                  function NSF() {
+                    document.getElementById('NSF_image').style.opacity = "0";
+                  }
+                  NSF()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">
+                  <span class="papertitle">Towards Automated Void Detection for Search and Rescue with 3D Perception <strong></strong></span>
+                </a>
+                <br>
+                <strong>Ananya Bal</strong>,
+                Ashutosh Gupta,
+                Pranav Goyal,
+                David Merrick,
+                Robin Murphy,
+                Howie Choset
+                <br>
+                <em>IROS</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
+                <br>
+                <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">Paper</a> | 
+                <a href="https://drive.google.com/file/d/1eZUWeSbD16lksmu7lgs7m0_HfgZ2Izs6/view?usp=sharing">Poster</a> | 
+                <a href="https://youtu.be/2q1_Dw3VITU">Video</a>
+                <p></p>
+                <p>
+                A novel layering-based point cloud processing approach using NetVLAD and COLMAP for improved registration and void detection in disaster scenes. 
+                </p>
+              </td>
+            </tr>
      
       
 
-      <tr onmouseout="uraft_stop()" onmouseover="uraft_start()">
-        <td style="padding:20px;width:25%;vertical-align:middle">
-          <div class="one">
-            <div class="two" id='uraft_image'><video  width=100% height=100% muted autoplay loop>
-            <source src="images/uraft-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video></div>
-            <img src='images/uraft-image.png' width="160" padding= "0px 0px 0px 150px" >
-          </div>
-          <script type="text/javascript">
-            function uraft_start() {
-              document.getElementById('uraft_image').style.opacity = "1";
-            }
+            <tr onmouseout="uraft_stop()" onmouseover="uraft_start()">
+              <td style="padding:20px;width:25%;vertical-align:middle">
+                <div class="one">
+                  <div class="two" id='uraft_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/uraft-video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/uraft-image.png' width="160" padding= "0px 0px 0px 150px" >
+                </div>
+                <script type="text/javascript">
+                  function uraft_start() {
+                    document.getElementById('uraft_image').style.opacity = "1";
+                  }
 
-            function uraft_stop() {
-              document.getElementById('uraft_image').style.opacity = "0";
-            }
-            uraft_stop()
-          </script>
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://arxiv.org/abs/2306.13329">
-            <span class="papertitle">U-RAFT: Unsupervised Deformable Ultrasound Image Registration and Its Application for Vessel Segmentation</span>
-          </a>
-          <br>
-          <strong>FNU Abhimanyu</strong>,
-          Andrew L. Orekhov,
-          Ananya Bal,
-          John Galeotti,
-          Howie Choset
-          <br>
-          <em>IROS</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-          <br> 
-          <a href="https://arxiv.org/abs/2306.13329">Paper</a> | <a href="https://youtu.be/3MaZpBA2jaQ">Video</a>
-          <p></p>
-          <p>
-          Making RAFT training unsupervised and applying it to predict vessel deformation under forces in ultrasound images. 
-          We use this further to generate ultrasound images at multiple force values and improve segmentation by 12%
-          </p>
-        </td>
-      </tr>
-      
-
-
-
-      <tr onmouseout="sofa_stop()" onmouseover="sofa_start()">
-        <td style="padding:1px;width:25%;vertical-align:top">
-          <div class="one">
-            <div class="two" id='sofa_image'><video  width=100% height=100% muted autoplay loop>
-            <source src="images/sofa-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video></div>
-            <img src='images/sofa2.png' width="220">
-          </div>
-          <script type="text/javascript">
-            function sofa_start() {
-              document.getElementById('sofa_image').style.opacity = "1";
-            }
-
-            function sofa_stop() {
-              document.getElementById('sofa_image').style.opacity = "0";
-            }
-            sofa_stop()
-          </script>
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">
-            <span class="papertitle">3D Deformation Simulation for Vascular Tissue with 2D Medical Imaging</span>
-          </a>
-          <br>
-          <strong>Ananya Bal</strong>, Ashutosh Gupta, Ceci Morales, Artur Dubrawski, John Galeotti, Howie Choset
-          <br>
-          <em>ICRA Workshop <a href="https://deformable-workshop.github.io/icra2023/">(3rd Workshop on Representing and Manipulating Deformable Objects)</a></em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-          <br> 
-          <a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">Paper</a> | 
-          <a href="https://drive.google.com/file/d/1vInUkBHyF0HLqYwLDVicPfDa6ww4_TR7/view?usp=sharing">Poster</a> 
-          <p></p>
-          <p>
-            A 3D deformation simulation framework where we reduce the sim2real gap by optimizing for
-            material properties through maximizing IoU of the vessel area
-            from the simulation and the real-world ultrasound images. 
-          </p>
-        </td>
-      </tr>
+                  function uraft_stop() {
+                    document.getElementById('uraft_image').style.opacity = "0";
+                  }
+                  uraft_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://arxiv.org/abs/2306.13329">
+                  <span class="papertitle">U-RAFT: Unsupervised Deformable Ultrasound Image Registration and Its Application for Vessel Segmentation</span>
+                </a>
+                <br>
+                <strong>FNU Abhimanyu</strong>,
+                Andrew L. Orekhov,
+                Ananya Bal,
+                John Galeotti,
+                Howie Choset
+                <br>
+                <em>IROS</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
+                <br> 
+                <a href="https://arxiv.org/abs/2306.13329">Paper</a> | <a href="https://youtu.be/3MaZpBA2jaQ">Video</a>
+                <p></p>
+                <p>
+                Making RAFT training unsupervised and applying it to predict vessel deformation under forces in ultrasound images. 
+                We use this further to generate ultrasound images at multiple force values and improve segmentation by 12%
+                </p>
+              </td>
+            </tr>
+            
 
 
 
+            <tr onmouseout="sofa_stop()" onmouseover="sofa_start()">
+              <td style="padding:1px;width:25%;vertical-align:top">
+                <div class="one">
+                  <div class="two" id='sofa_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/sofa-video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/sofa2.png' width="220">
+                </div>
+                <script type="text/javascript">
+                  function sofa_start() {
+                    document.getElementById('sofa_image').style.opacity = "1";
+                  }
 
-      <tr onmouseout="icra_stop()" onmouseover="icra_start()">
-        <td style="padding:1px;width:25%;vertical-align:top">
-          <div class="one">
-            <div class="two" id='icra_image'><video  width=100% height=100% muted autoplay loop>
-            <source src="images/icra-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video></div>
-            <img src='images/icra2.png' width="250">
-          </div>
-          <script type="text/javascript">
-            function icra_start() {
-              document.getElementById('icra_image').style.opacity = "1";
-            }
+                  function sofa_stop() {
+                    document.getElementById('sofa_image').style.opacity = "0";
+                  }
+                  sofa_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">
+                  <span class="papertitle">3D Deformation Simulation for Vascular Tissue with 2D Medical Imaging</span>
+                </a>
+                <br>
+                <strong>Ananya Bal</strong>, Ashutosh Gupta, Ceci Morales, Artur Dubrawski, John Galeotti, Howie Choset
+                <br>
+                <em>ICRA Workshop <a href="https://deformable-workshop.github.io/icra2023/">(3rd Workshop on Representing and Manipulating Deformable Objects)</a></em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
+                <br> 
+                <a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">Paper</a> | 
+                <a href="https://drive.google.com/file/d/1vInUkBHyF0HLqYwLDVicPfDa6ww4_TR7/view?usp=sharing">Poster</a> 
+                <p></p>
+                <p>
+                  A 3D deformation simulation framework where we reduce the sim2real gap by optimizing for
+                  material properties through maximizing IoU of the vessel area
+                  from the simulation and the real-world ultrasound images. 
+                </p>
+              </td>
+            </tr>
 
-            function icra_stop() {
-              document.getElementById('icra_image').style.opacity = "0";
-            }
-            icra_stop()
-          </script>
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">
-            <span class="papertitle">A Curvature and Trajectory Optimization-based 3D
-              Surface Reconstruction Pipeline for Ultrasound
-              Trajectory Generation</span>
-          </a>
-          <br>
-          <strong>Ananya Bal</strong>, Ashutosh Gupta, FNU Abhimanyu, John Galeotti, Howie Choset
-          <br>
-          <em>ICRA</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-          <br> 
-          <a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">Paper</a> | 
-          <a href="https://drive.google.com/file/d/1U5COYoaRkKytzx0OCScCleDkdaLLXeMN/view?usp=sharing">Poster</a> | 
-          <a href="https://youtu.be/C5HkrkUr0zQ">Video</a>
-          <p></p>
+
+
+
+            <tr onmouseout="icra_stop()" onmouseover="icra_start()">
+              <td style="padding:1px;width:25%;vertical-align:top">
+                <div class="one">
+                  <div class="two" id='icra_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/icra-video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/icra2.png' width="250">
+                </div>
+                <script type="text/javascript">
+                  function icra_start() {
+                    document.getElementById('icra_image').style.opacity = "1";
+                  }
+
+                  function icra_stop() {
+                    document.getElementById('icra_image').style.opacity = "0";
+                  }
+                  icra_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">
+                  <span class="papertitle">A Curvature and Trajectory Optimization-based 3D
+                    Surface Reconstruction Pipeline for Ultrasound
+                    Trajectory Generation</span>
+                </a>
+                <br>
+                <strong>Ananya Bal</strong>, Ashutosh Gupta, FNU Abhimanyu, John Galeotti, Howie Choset
+                <br>
+                <em>ICRA</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
+                <br> 
+                <a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">Paper</a> | 
+                <a href="https://drive.google.com/file/d/1U5COYoaRkKytzx0OCScCleDkdaLLXeMN/view?usp=sharing">Poster</a> | 
+                <a href="https://youtu.be/C5HkrkUr0zQ">Video</a>
+                <p></p>
+
+              
+                <p>
+                  A 3D reconstruction optimization-based method to identify a high curvature region for autonomous ultrasound scanning. A novel, comprehensive 3D reconstruction evaluation score is proposed. 
+                </p>
+              </td>
+            </tr>
 
          
-          <p>
-            A 3D reconstruction optimization-based method to identify a high curvature region for autonomous ultrasound scanning. A novel, comprehensive 3D reconstruction evaluation score is proposed. 
-          </p>
-        </td>
-      </tr>
 
-         
+            <tr onmouseout="three_d_defom_stop()" onmouseover="three_d_defom_start()">
+              <td style="padding:1px;width:25%;vertical-align:bottom">
+                <div class="one">
+                  <div class="two" id='three_d_defom_image'><video  width=100% height=100% muted autoplay loop>
+                  <source src="images/three_d_defom-video.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video></div>
+                  <img src='images/pc_undeformed.gif' width="200" padding="100px">
+                </div>
+                <script type="text/javascript">
+                  function three_d_defom_start() {
+                    document.getElementById('three_d_defom_image').style.opacity = "1";
+                  }
 
-      <tr onmouseout="three_d_defom_stop()" onmouseover="three_d_defom_start()">
-        <td style="padding:1px;width:25%;vertical-align:bottom">
-          <div class="one">
-            <div class="two" id='three_d_defom_image'><video  width=100% height=100% muted autoplay loop>
-            <source src="images/three_d_defom-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-            </video></div>
-            <img src='images/pc_undeformed.gif' width="200" padding="100px">
-          </div>
-          <script type="text/javascript">
-            function three_d_defom_start() {
-              document.getElementById('three_d_defom_image').style.opacity = "1";
-            }
-
-            function three_d_defom_stop() {
-              document.getElementById('three_d_defom_image').style.opacity = "0";
-            }
-            three_d_defom_stop()
-          </script>
-        </td>
-        <td style="padding:20px;width:75%;vertical-align:middle">
-          <a href="https://stump-mail-041.notion.site/16-824-Project-Modeling-3D-Deformations-under-External-Force-from-2D-Images-033da9be9d734d5ba7e0f8b55d7929cf">
-            <span class="papertitle">Modeling 3D Deformations under External Force from 2D Images</span>
-          </a>
-          <br>
-          <strong>Ananya Bal</strong>, FNU Abhimanyu
-          <br>
-          <em>Presented in 16-824, Visual Learning and Recognition by Prof. Deepak Pathak</em>. &nbsp <font color="red"></font>
-          <p></p>
-          <p>
-            Our pipeline learns deformation using 3D point clouds of the deforming object, material properties, force and its point of application and predicts a deformed version of the object. 
-            As we go from images to point clouds, our method uses 2D RGB images to learn 3D deformations.
-          </p>
-        </td>
-      </tr>
+                  function three_d_defom_stop() {
+                    document.getElementById('three_d_defom_image').style.opacity = "0";
+                  }
+                  three_d_defom_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+                <a href="https://stump-mail-041.notion.site/16-824-Project-Modeling-3D-Deformations-under-External-Force-from-2D-Images-033da9be9d734d5ba7e0f8b55d7929cf">
+                  <span class="papertitle">Modeling 3D Deformations under External Force from 2D Images</span>
+                </a>
+                <br>
+                <strong>Ananya Bal</strong>, FNU Abhimanyu
+                <br>
+                <em>Presented in 16-824, Visual Learning and Recognition by Prof. Deepak Pathak</em>. &nbsp <font color="red"></font>
+                <p></p>
+                <p>
+                  Our pipeline learns deformation using 3D point clouds of the deforming object, material properties, force and its point of application and predicts a deformed version of the object. 
+                  As we go from images to point clouds, our method uses 2D RGB images to learn 3D deformations.
+                </p>
+              </td>
+            </tr>
 
           </tbody></table>
           <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>

@@ -1,0 +1,746 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>HOI Method Comparison</title>
+  <style>
+    :root {
+      --bg: #f4f5f9;
+      --card: #ffffff;
+      --text: #1c2230;
+      --muted: #5b6478;
+      --border: #d9deea;
+      --accent: #4361ee;
+      --accent-light: #eef1ff;
+    }
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 24px auto;
+      padding: 0 16px 40px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 4px 14px rgba(13,22,38,.06);
+      margin-bottom: 20px;
+    }
+    /* ── Hero card ── */
+    .hero-card {
+      background: linear-gradient(135deg, #f8f9ff 0%, #eef1ff 100%);
+      border-color: #d0d7f5;
+    }
+    .hero-card h1 {
+      margin: 0 0 4px;
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+    .desc {
+      margin: 0 0 10px;
+      line-height: 1.55;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav-hint {
+      font-size: 12px;
+      color: var(--muted);
+      background: rgba(67,97,238,.06);
+      padding: 7px 14px;
+      border-radius: 8px;
+      margin: 10px 0 0;
+      line-height: 1.5;
+    }
+    .nav-hint strong { color: var(--text); }
+    /* ── Table of contents ── */
+    .toc {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .toc-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
+    .toc-grid {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .toc-group { min-width: 160px; }
+    .toc-group h4 {
+      font-size: 13px;
+      font-weight: 700;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+    .toc-group a {
+      display: block;
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 3px 0;
+      transition: color .15s;
+    }
+    .toc-group a:hover { text-decoration: underline; color: #2b47c3; }
+    /* ── General ── */
+    h1 { margin: 0 0 6px; font-size: 26px; }
+    h2 { margin: 0 0 12px; font-size: 22px; font-weight: 700; }
+    h3.prompt-title {
+      margin: 0 0 10px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    p { margin: 0; line-height: 1.55; color: var(--muted); }
+    .pill {
+      display: inline-block;
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 32px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .section-heading h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .section-heading .section-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+    .dataset-section {
+      margin-bottom: 28px;
+    }
+    .dataset-section summary {
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 6px 0;
+      color: var(--text);
+    }
+    .dataset-section summary::marker { color: var(--accent); }
+    .prompt-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 10px rgba(13,22,38,.04);
+      transition: box-shadow .2s;
+    }
+    .prompt-card:hover {
+      box-shadow: 0 4px 18px rgba(13,22,38,.09);
+    }
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .tab-btn {
+      padding: 6px 16px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .tab-btn:not(.active):hover {
+      background: var(--accent-light);
+    }
+    
+    .tab-btn.method-MAD-HOI.active {
+      background: #4361ee;
+      color: #fff;
+      border-color: #4361ee;
+    }
+    .tab-btn.method-MAD-HOI:not(.active):hover {
+      background: #4361ee18;
+    }
+    .tab-btn.method-DiffH2O.active {
+      background: #e63946;
+      color: #fff;
+      border-color: #e63946;
+    }
+    .tab-btn.method-DiffH2O:not(.active):hover {
+      background: #e6394618;
+    }
+    .tab-btn.method-LatentHOI.active {
+      background: #2a9d8f;
+      color: #fff;
+      border-color: #2a9d8f;
+    }
+    .tab-btn.method-LatentHOI:not(.active):hover {
+      background: #2a9d8f18;
+    }
+    .tab-btn.method-Text2HOI.active {
+      background: #e9c46a;
+      color: #fff;
+      border-color: #e9c46a;
+    }
+    .tab-btn.method-Text2HOI:not(.active):hover {
+      background: #e9c46a18;
+    }
+    .tab-btn.cap-Completion.active {
+      background: #e63946;
+      color: #fff;
+      border-color: #e63946;
+    }
+    .tab-btn.cap-Completion:not(.active):hover {
+      background: #e6394618;
+    }
+    .tab-btn.cap-Infilling.active {
+      background: #2a9d8f;
+      color: #fff;
+      border-color: #2a9d8f;
+    }
+    .tab-btn.cap-Infilling:not(.active):hover {
+      background: #2a9d8f18;
+    }
+    .tab-btn.cap-Composite_Motion.active {
+      background: #7209b7;
+      color: #fff;
+      border-color: #7209b7;
+    }
+    .tab-btn.cap-Composite_Motion:not(.active):hover {
+      background: #7209b718;
+    }
+    .viewer-frame {
+      width: 100%;
+      height: 870px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      display: block;
+      margin: 0 auto;
+    }
+    .viewer-wrap {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .open-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 10;
+      background: rgba(255,255,255,.85);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .open-btn:hover { background: #fff; }
+    .play-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.10);
+      z-index: 5;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background 0.2s;
+    }
+    .play-overlay:hover {
+      background: rgba(0,0,0,0.20);
+    }
+    .play-icon {
+      width: 72px; height: 72px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+    .play-icon svg {
+      width: 32px; height: 32px;
+      margin-left: 4px;
+      fill: var(--accent);
+    }
+    .status-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      z-index: 10;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .status-badge.preview {
+      background: rgba(255,255,255,.85);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .status-badge.loading {
+      background: #fffbe6;
+      color: #b08800;
+      border: 1px solid #ffe58f;
+    }
+    .status-badge.playing {
+      background: #e6ffe6;
+      color: #1a7a1a;
+      border: 1px solid #b7eb8f;
+    }
+    .placeholder {
+      text-align: center;
+      padding: 60px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 900px) {
+      .container { max-width: 100vw; padding: 0 8px 20px; }
+      .viewer-frame { height: 870px; }
+      .toc-grid { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" id="app">
+    <section class="card hero-card">
+      <h1>HOI Method Comparison</h1>
+      <p class="subtitle">Interactive 3D comparison of hand-object interaction methods</p>
+      <p class="desc">Each card shows a first-frame preview as you scroll.
+         Click the <strong>&#9654; Play</strong> button to load the full
+         interactive animation. Use the method tabs to switch between approaches.</p>
+      <div class="nav-hint">
+        <strong>Viewer controls:</strong>
+        Left-click &amp; drag to orbit &nbsp;&middot;&nbsp;
+        Scroll to zoom &nbsp;&middot;&nbsp;
+        Right-click &amp; drag to pan &nbsp;&middot;&nbsp;
+        Timeline slider to scrub frames
+      </div>
+      <div class="toc">
+        <p class="toc-title">Contents</p>
+        <div class="toc-grid">
+          <div class="toc-group">
+            <h4>Method Comparison</h4>
+      <a href="#section-arctic">Arctic Scenes</a>
+      <a href="#section-grab">Grab Scenes</a>
+          </div>
+          <div class="toc-group" id="toc-extras-group" style="display:none">
+            <h4>Additional Capabilities</h4>
+      <a href="#section-cap-Completion">Completion</a>
+      <a href="#section-cap-Composite_Motion">Composite Motion</a>
+      <a href="#section-cap-Infilling">Infilling</a>
+          </div>
+        </div>
+      </div>
+      <div id="method-pills" style="margin-top:12px"></div>
+    </section>
+    <div id="content"></div>
+    <div id="extras-content"></div>
+  </main>
+
+<script>
+"use strict";
+var MANIFEST = {"arctic":{"Closing microwave with left hand":{"MAD-HOI":{"full":"viewers/arctic/MAD-HOI/Closing_microwave_with_left_hand.html","preview":"viewers/arctic/MAD-HOI/Closing_microwave_with_left_hand_preview.html"},"DiffH2O":{"full":"viewers/arctic/DiffH2O/Closing_microwave_with_left_hand.html","preview":"viewers/arctic/DiffH2O/Closing_microwave_with_left_hand_preview.html"},"LatentHOI":{"full":"viewers/arctic/LatentHOI/Closing_microwave_with_left_hand.html","preview":"viewers/arctic/LatentHOI/Closing_microwave_with_left_hand_preview.html"},"Text2HOI":{"full":"viewers/arctic/Text2HOI/Closing_microwave_with_left_hand.html","preview":"viewers/arctic/Text2HOI/Closing_microwave_with_left_hand_preview.html"}},"Right hand closes waffleiron":{"MAD-HOI":{"full":"viewers/arctic/MAD-HOI/Right_hand_closes_waffleiron.html","preview":"viewers/arctic/MAD-HOI/Right_hand_closes_waffleiron_preview.html"},"DiffH2O":{"full":"viewers/arctic/DiffH2O/Right_hand_closes_waffleiron.html","preview":"viewers/arctic/DiffH2O/Right_hand_closes_waffleiron_preview.html"},"LatentHOI":{"full":"viewers/arctic/LatentHOI/Right_hand_closes_waffleiron.html","preview":"viewers/arctic/LatentHOI/Right_hand_closes_waffleiron_preview.html"},"Text2HOI":{"full":"viewers/arctic/Text2HOI/Right_hand_closes_waffleiron.html","preview":"viewers/arctic/Text2HOI/Right_hand_closes_waffleiron_preview.html"}},"Close laptop with both hands":{"DiffH2O":{"full":"viewers/arctic/DiffH2O/Close_laptop_with_both_hands.html","preview":"viewers/arctic/DiffH2O/Close_laptop_with_both_hands_preview.html"},"MAD-HOI":{"full":"viewers/arctic/MAD-HOI/Close_laptop_with_both_hands.html","preview":"viewers/arctic/MAD-HOI/Close_laptop_with_both_hands_preview.html"},"LatentHOI":{"full":"viewers/arctic/LatentHOI/Close_laptop_with_both_hands.html","preview":"viewers/arctic/LatentHOI/Close_laptop_with_both_hands_preview.html"},"Text2HOI":{"full":"viewers/arctic/Text2HOI/Close_laptop_with_both_hands.html","preview":"viewers/arctic/Text2HOI/Close_laptop_with_both_hands_preview.html"}},"Mixer is closed with both hands":{"MAD-HOI":{"full":"viewers/arctic/MAD-HOI/Mixer_is_closed_with_both_hands.html","preview":"viewers/arctic/MAD-HOI/Mixer_is_closed_with_both_hands_preview.html"},"DiffH2O":{"full":"viewers/arctic/DiffH2O/Mixer_is_closed_with_both_hands.html","preview":"viewers/arctic/DiffH2O/Mixer_is_closed_with_both_hands_preview.html"},"LatentHOI":{"full":"viewers/arctic/LatentHOI/Mixer_is_closed_with_both_hands.html","preview":"viewers/arctic/LatentHOI/Mixer_is_closed_with_both_hands_preview.html"},"Text2HOI":{"full":"viewers/arctic/Text2HOI/Mixer_is_closed_with_both_hands.html","preview":"viewers/arctic/Text2HOI/Mixer_is_closed_with_both_hands_preview.html"}}},"grab":{"Duck is passed with right hand":{"LatentHOI":{"full":"viewers/grab/LatentHOI/Duck_is_passed_with_right_hand.html","preview":"viewers/grab/LatentHOI/Duck_is_passed_with_right_hand_preview.html"},"DiffH2O":{"full":"viewers/grab/DiffH2O/Duck_is_passed_with_right_hand.html","preview":"viewers/grab/DiffH2O/Duck_is_passed_with_right_hand_preview.html"},"MAD-HOI":{"full":"viewers/grab/MAD-HOI/Duck_is_passed_with_right_hand.html","preview":"viewers/grab/MAD-HOI/Duck_is_passed_with_right_hand_preview.html"},"Text2HOI":{"full":"viewers/grab/Text2HOI/Duck_is_passed_with_right_hand.html","preview":"viewers/grab/Text2HOI/Duck_is_passed_with_right_hand_preview.html"}},"Both hands set watch":{"LatentHOI":{"full":"viewers/grab/LatentHOI/Both_hands_set_watch.html","preview":"viewers/grab/LatentHOI/Both_hands_set_watch_preview.html"},"MAD-HOI":{"full":"viewers/grab/MAD-HOI/Both_hands_set_watch.html","preview":"viewers/grab/MAD-HOI/Both_hands_set_watch_preview.html"},"DiffH2O":{"full":"viewers/grab/DiffH2O/Both_hands_set_watch.html","preview":"viewers/grab/DiffH2O/Both_hands_set_watch_preview.html"},"Text2HOI":{"full":"viewers/grab/Text2HOI/Both_hands_set_watch.html","preview":"viewers/grab/Text2HOI/Both_hands_set_watch_preview.html"}},"Pour teapot with both hands":{"LatentHOI":{"full":"viewers/grab/LatentHOI/Pour_teapot_with_both_hands.html","preview":"viewers/grab/LatentHOI/Pour_teapot_with_both_hands_preview.html"},"MAD-HOI":{"full":"viewers/grab/MAD-HOI/Pour_teapot_with_both_hands.html","preview":"viewers/grab/MAD-HOI/Pour_teapot_with_both_hands_preview.html"},"Text2HOI":{"full":"viewers/grab/Text2HOI/Pour_teapot_with_both_hands.html","preview":"viewers/grab/Text2HOI/Pour_teapot_with_both_hands_preview.html"},"DiffH2O":{"full":"viewers/grab/DiffH2O/Pour_teapot_with_both_hands.html","preview":"viewers/grab/DiffH2O/Pour_teapot_with_both_hands_preview.html"}}}};
+var METHODS = ["MAD-HOI", "DiffH2O", "LatentHOI", "Text2HOI"];
+var DEFAULT_METHOD = "MAD-HOI";
+
+function safeCls(n){ return n.replace(/[^a-zA-Z0-9_-]/g,"_"); }
+
+var contentEl = document.getElementById("content");
+var pillsEl = document.getElementById("method-pills");
+
+METHODS.forEach(function(m){
+  var sp = document.createElement("span");
+  sp.className = "pill method-"+safeCls(m);
+  sp.textContent = m;
+  sp.style.background = "var(--accent-light)";
+  sp.style.color = "var(--accent)";
+  pillsEl.appendChild(sp);
+});
+
+var PLAY_SVG = '<svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>';
+
+var cards = [];
+var datasets = Object.keys(MANIFEST).sort();
+
+datasets.forEach(function(ds){
+  var sec = document.createElement("details");
+  sec.className = "dataset-section";
+  sec.id = "section-"+ds;
+  sec.open = true;
+  var sum = document.createElement("summary");
+  sum.textContent = ds.charAt(0).toUpperCase()+ds.slice(1)+" Scenes";
+  sec.appendChild(sum);
+
+  var prompts = Object.keys(MANIFEST[ds]).sort();
+  prompts.forEach(function(prompt){
+    var methods = MANIFEST[ds][prompt];
+    var avail = METHODS.filter(function(m){ return !!methods[m]; });
+    if(!avail.length) return;
+
+    var card = document.createElement("div");
+    card.className = "prompt-card";
+
+    var h3 = document.createElement("h3");
+    h3.className = "prompt-title";
+    h3.textContent = prompt;
+    card.appendChild(h3);
+
+    var tabBar = document.createElement("div");
+    tabBar.className = "tab-bar";
+
+    var wrap = document.createElement("div");
+    wrap.className = "viewer-wrap";
+    wrap.style.display = "none";
+
+    var iframe = document.createElement("iframe");
+    iframe.className = "viewer-frame";
+    iframe.setAttribute("loading","lazy");
+
+    var badge = document.createElement("div");
+    badge.className = "status-badge preview";
+    badge.textContent = "First frame";
+
+    var openBtn = document.createElement("button");
+    openBtn.className = "open-btn";
+    openBtn.textContent = "Open in new tab";
+
+    var playBtn = document.createElement("div");
+    playBtn.className = "play-overlay";
+    playBtn.innerHTML = '<div class="play-icon">'+PLAY_SVG+'</div>';
+    playBtn.title = "Load full animation";
+
+    var placeholder = document.createElement("div");
+    placeholder.className = "placeholder";
+    placeholder.textContent = "Scroll into view to load preview…";
+
+    wrap.appendChild(badge);
+    wrap.appendChild(openBtn);
+    wrap.appendChild(playBtn);
+    wrap.appendChild(iframe);
+
+    var st = {
+      ds: ds, prompt: prompt, active: null,
+      previewLoaded: false, isPlaying: false,
+      iframe: iframe, wrap: wrap, card: card,
+      placeholder: placeholder, playBtn: playBtn,
+      badge: badge, openBtn: openBtn
+    };
+
+    var defaultM = avail.indexOf(DEFAULT_METHOD)>=0 ? DEFAULT_METHOD : avail[0];
+
+    avail.forEach(function(m){
+      var btn = document.createElement("button");
+      btn.className = "tab-btn method-"+safeCls(m);
+      btn.textContent = m;
+      btn.addEventListener("click", function(){
+        if(st.active===m) return;
+        tabBar.querySelectorAll(".tab-btn").forEach(function(b){b.classList.remove("active");});
+        btn.classList.add("active");
+        st.active = m;
+        loadViewer(st);
+      });
+      if(m===defaultM){ btn.classList.add("active"); st.active=m; }
+      tabBar.appendChild(btn);
+    });
+
+    openBtn.addEventListener("click", function(){
+      if(iframe.src) window.open(iframe.src, "_blank");
+    });
+
+    playBtn.addEventListener("click", function(){
+      st.isPlaying = true;
+      loadViewer(st);
+    });
+
+    card.appendChild(tabBar);
+    card.appendChild(placeholder);
+    card.appendChild(wrap);
+    sec.appendChild(card);
+    cards.push(st);
+  });
+  contentEl.appendChild(sec);
+});
+
+function loadViewer(st){
+  if(!st.previewLoaded) return;
+  var paths = MANIFEST[st.ds][st.prompt][st.active];
+  if(!paths) return;
+  if(st.isPlaying){
+    st.iframe.src = paths.full;
+    st.playBtn.style.display = "none";
+    st.badge.className = "status-badge loading";
+    st.badge.textContent = "Loading animation…";
+    st.iframe.onload = function(){
+      st.badge.className = "status-badge playing";
+      st.badge.textContent = "▶ Playing";
+      st.iframe.onload = null;
+    };
+  } else {
+    st.iframe.src = paths.preview;
+    st.playBtn.style.display = "";
+    st.badge.className = "status-badge preview";
+    st.badge.textContent = "First frame";
+  }
+}
+
+function showPreview(st){
+  if(st.previewLoaded) return;
+  st.previewLoaded = true;
+  st.placeholder.style.display = "none";
+  st.wrap.style.display = "";
+  var paths = MANIFEST[st.ds][st.prompt][st.active];
+  if(paths){
+    st.iframe.src = paths.preview;
+  }
+}
+
+var observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(!entry.isIntersecting) return;
+    var c = entry.target;
+    var st = cards.find(function(s){return s.card===c;});
+    if(st && !st.previewLoaded) showPreview(st);
+  });
+}, {rootMargin:"300px"});
+
+cards.forEach(function(st){ observer.observe(st.card); });
+
+/* ── Additional Capabilities section ── */
+var EXTRAS = {"Infilling":{"Phone is typed with right hand":{"full":"viewers/additional/Infilling/Phone_is_typed_with_right_hand.html","preview":"viewers/additional/Infilling/Phone_is_typed_with_right_hand_preview.html"},"Capsulemachine is closed with both hands":{"full":"viewers/additional/Infilling/Capsulemachine_is_closed_with_both_hands.html","preview":"viewers/additional/Infilling/Capsulemachine_is_closed_with_both_hands_preview.html"},"Waffleiron is closed with both hands":{"full":"viewers/additional/Infilling/Waffleiron_is_closed_with_both_hands.html","preview":"viewers/additional/Infilling/Waffleiron_is_closed_with_both_hands_preview.html"}},"Composite Motion":{"Grasping ketchup with right hand and lifting ketchup with right hand":{"full":"viewers/additional/Composite Motion/Grasping_ketchup_with_right_hand_and_lifting_ketchup_with_right_hand.html","preview":"viewers/additional/Composite Motion/Grasping_ketchup_with_right_hand_and_lifting_ketchup_with_right_hand_preview.html"},"Lift notebook with both hands and open notebook with both hands":{"full":"viewers/additional/Composite Motion/Lift_notebook_with_both_hands_and_open_notebook_with_both_hands.html","preview":"viewers/additional/Composite Motion/Lift_notebook_with_both_hands_and_open_notebook_with_both_hands_preview.html"},"Open mixer with right hand and close mixer with right hand":{"full":"viewers/additional/Composite Motion/Open_mixer_with_right_hand_and_close_mixer_with_right_hand.html","preview":"viewers/additional/Composite Motion/Open_mixer_with_right_hand_and_close_mixer_with_right_hand_preview.html"}},"Completion":{"Ketchup is placed with right hand":{"full":"viewers/additional/Completion/Ketchup_is_placed_with_right_hand.html","preview":"viewers/additional/Completion/Ketchup_is_placed_with_right_hand_preview.html"},"Microwave is opened with left hand":{"full":"viewers/additional/Completion/Microwave_is_opened_with_left_hand.html","preview":"viewers/additional/Completion/Microwave_is_opened_with_left_hand_preview.html"},"Mixer is closed with both hands":{"full":"viewers/additional/Completion/Mixer_is_closed_with_both_hands.html","preview":"viewers/additional/Completion/Mixer_is_closed_with_both_hands_preview.html"}}};
+var extrasEl = document.getElementById("extras-content");
+
+(function buildExtras(){
+  var caps = Object.keys(EXTRAS);
+  if(!caps.length) return;
+
+  /* Show the extras TOC group */
+  var tocExtras = document.getElementById("toc-extras-group");
+  if(tocExtras) tocExtras.style.display = "";
+
+  var heading = document.createElement("div");
+  heading.className = "section-heading";
+  heading.id = "section-additional";
+  heading.innerHTML = '<h2>Additional Capabilities</h2><span class="section-badge">MAD-HOI</span>';
+  extrasEl.appendChild(heading);
+
+  var desc = document.createElement("p");
+  desc.className = "desc";
+  desc.style.marginBottom = "14px";
+  desc.textContent = "Showcasing additional capabilities of MAD-HOI beyond standard motion generation.";
+  extrasEl.appendChild(desc);
+
+  /* capability tab bar */
+  var capBar = document.createElement("div");
+  capBar.className = "tab-bar";
+  capBar.style.marginBottom = "16px";
+  extrasEl.appendChild(capBar);
+
+  var capPanels = {};
+  var activeCap = caps[0];
+
+  caps.forEach(function(cap, ci){
+    var btn = document.createElement("button");
+    btn.className = "tab-btn cap-"+safeCls(cap);
+    btn.textContent = cap;
+    if(ci===0) btn.classList.add("active");
+    btn.addEventListener("click", function(){
+      capBar.querySelectorAll(".tab-btn").forEach(function(b){b.classList.remove("active");});
+      btn.classList.add("active");
+      caps.forEach(function(c){ capPanels[c].style.display = (c===cap)?"":"none"; });
+      activeCap = cap;
+    });
+    capBar.appendChild(btn);
+
+    var panel = document.createElement("div");
+    panel.id = "section-cap-"+safeCls(cap);
+    panel.style.display = (ci===0) ? "" : "none";
+    capPanels[cap] = panel;
+
+    /* Legend for Completion / Infilling tabs */
+    if (cap === "Completion" || cap === "Infilling") {
+      var legend = document.createElement("div");
+      legend.style.cssText = "margin: 0 0 14px; padding: 10px 16px; border-radius: 8px; "
+        + "background: linear-gradient(135deg, #f0f4ff 0%, #e8eeff 100%); "
+        + "border: 1px solid #c5d0f0; font-size: 0.92rem; color: #334; line-height: 1.5;";
+      legend.innerHTML = '<strong style="color:#4a6cf7">ℹ Legend:</strong> '
+        + '<span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#4a6cf7;vertical-align:middle;margin:0 4px"></span>'
+        + ' <strong>Solid colors</strong> = Generated by MAD-HOI model &nbsp;&nbsp;'
+        + '<span style="display:inline-block;width:12px;height:12px;border-radius:3px;background:#a5b4fb;vertical-align:middle;margin:0 4px"></span>'
+        + ' <strong>Dimmed / lighter colors</strong> = Ground truth frames';
+      panel.appendChild(legend);
+    }
+
+    var prompts = Object.keys(EXTRAS[cap]).sort();
+    prompts.forEach(function(prompt){
+      var paths = EXTRAS[cap][prompt];
+      var card = document.createElement("div");
+      card.className = "prompt-card";
+
+      var h3 = document.createElement("h3");
+      h3.className = "prompt-title";
+      h3.textContent = prompt;
+      card.appendChild(h3);
+
+      var wrap = document.createElement("div");
+      wrap.className = "viewer-wrap";
+      wrap.style.display = "none";
+
+      var iframe = document.createElement("iframe");
+      iframe.className = "viewer-frame";
+      iframe.setAttribute("loading","lazy");
+
+      var badge = document.createElement("div");
+      badge.className = "status-badge preview";
+      badge.textContent = "First frame";
+
+      var openBtn = document.createElement("button");
+      openBtn.className = "open-btn";
+      openBtn.textContent = "Open in new tab";
+
+      var playBtn = document.createElement("div");
+      playBtn.className = "play-overlay";
+      playBtn.innerHTML = '<div class="play-icon">'+PLAY_SVG+'</div>';
+      playBtn.title = "Load full animation";
+
+      var placeholder = document.createElement("div");
+      placeholder.className = "placeholder";
+      placeholder.textContent = "Scroll into view to load preview…";
+
+      wrap.appendChild(badge);
+      wrap.appendChild(openBtn);
+      wrap.appendChild(playBtn);
+      wrap.appendChild(iframe);
+
+      var st = {
+        cap: cap, prompt: prompt,
+        previewLoaded: false, isPlaying: false,
+        iframe: iframe, wrap: wrap, card: card,
+        placeholder: placeholder, playBtn: playBtn,
+        badge: badge, openBtn: openBtn, paths: paths
+      };
+
+      openBtn.addEventListener("click", function(){
+        if(iframe.src) window.open(iframe.src, "_blank");
+      });
+
+      playBtn.addEventListener("click", function(){
+        st.isPlaying = true;
+        st.iframe.src = st.paths.full;
+        st.playBtn.style.display = "none";
+        st.badge.className = "status-badge loading";
+        st.badge.textContent = "Loading animation…";
+        st.iframe.onload = function(){
+          st.badge.className = "status-badge playing";
+          st.badge.textContent = "▶ Playing";
+          st.iframe.onload = null;
+        };
+      });
+
+      card.appendChild(placeholder);
+      card.appendChild(wrap);
+      panel.appendChild(card);
+
+      cards.push(st);
+    });
+
+    extrasEl.appendChild(panel);
+  });
+})();
+
+/* Observe extras cards too */
+cards.forEach(function(st){
+  if(st.cap){
+    observer.observe(st.card);
+  }
+});
+
+/* Patch showPreview for extras cards (no method tabs) */
+var origShowPreview = showPreview;
+showPreview = function(st){
+  if(st.cap){
+    if(st.previewLoaded) return;
+    st.previewLoaded = true;
+    st.placeholder.style.display = "none";
+    st.wrap.style.display = "";
+    st.iframe.src = st.paths.preview;
+    return;
+  }
+  origShowPreview(st);
+};
+
+/* Handle TOC clicks for capability tabs */
+document.querySelectorAll('.toc-group a[href^="#section-cap-"]').forEach(function(a){
+  a.addEventListener("click", function(e){
+    var id = a.getAttribute("href").slice(1);
+    var panel = document.getElementById(id);
+    if(!panel) return;
+    /* find matching cap name and activate its tab */
+    var caps = Object.keys(EXTRAS);
+    for(var i=0;i<caps.length;i++){
+      var cid = "section-cap-"+safeCls(caps[i]);
+      if(cid===id){
+        /* click the tab button */
+        var btns = document.querySelectorAll(".tab-bar .tab-btn");
+        btns.forEach(function(b){
+          if(b.textContent===caps[i]) b.click();
+        });
+        break;
+      }
+    }
+  });
+});
+
+/* Force scroll to top on page load / refresh */
+window.scrollTo(0, 0);
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.addEventListener('load', function() { window.scrollTo(0, 0); });
+</script>
+</body>
+</html>

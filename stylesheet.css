@@ -98,7 +98,7 @@ h2 {
 
 .papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
 }
 
@@ -118,10 +118,17 @@ h2 {
 .two {
   width: 160px;
   height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   transition: opacity .2s ease-in-out;
   -moz-transition: opacity .2s ease-in-out;
   -webkit-transition: opacity .2s ease-in-out;
+}
+
+.pri4r-img {
+  padding-top: 40px;
 }
 
 .fade {

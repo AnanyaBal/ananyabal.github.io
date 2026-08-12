@@ -86,7 +86,39 @@
           
           <table style="width:100%;border:0px;border-spacing:0px 18px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
             <h2 style="margin-bottom:16px;">Selected Projects</h2>
-
+              <tr class="project-card-row" onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
+              <td style="padding:1px;width:25%;vertical-align:middle">
+                <div class="project-thumb">
+                  <img class="pri4r-img" src='images/mayavi.gif' width="225">
+                </div>
+                <script type="text/javascript">
+                  function unerf1_start() {
+                    document.getElementById('unerf_image').style.opacity = "1";
+                  }
+      
+                  function unerf1_stop() {
+                    document.getElementById('unerf_image').style.opacity = "0";
+                  }
+                  unerf1_stop()
+                </script>
+              </td>
+              <td style="padding:20px;width:75%;vertical-align:middle">
+            
+                  <span class="papertitle">Embodiment-Aware Generation of Hand-Object Interactions</span>
+                
+                <br>
+                <strong>Chaitanya Chawla*, Ananya Bal*</strong>, Kartik Sharma, Laszlo A. Jeni, Guanya Shi
+               
+                <br>
+                <a href="https://drive.google.com/file/d/1v1jJTPdgkPusj7UIGmRbCw59zYhAKZ86/view?usp=drive_link">Preprint</a> 
+                <br> 
+                <p></p>
+                <p >
+                  Embody-HOI applies kinematic guidance to diffusion-based motion generation methods, resulting in more feasible dexterous, human reference trajectories that robots can carry out in sim with minimal reinforcement learning for object dynamics.
+                </p>
+              </td>
+            </tr>
+            
              <tr class="project-card-row" onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
               <td style="padding:1px;width:25%;vertical-align:middle">
                 <div class="project-thumb">

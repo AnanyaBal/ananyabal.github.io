@@ -1,194 +1,426 @@
 <!DOCTYPE HTML>
+
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+<base href="https://ananyabal.github.io/"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>Ananya Bal</title>
+<meta content="Ananya Bal" name="author"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+<link href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🌐&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<style id="wide-project-preview">
+      /*
+       * PREVIEW ONLY:
+       * - Header / bio / updates remain at the site's original 1000px width.
+       * - Only Selected Projects expands outward.
+       */
+      .projects-table {
+        width: min(1200px, calc(100vw - 40px)) !important;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        border-spacing: 0 18px !important;
+        table-layout: fixed;
+      }
 
-    <title >Ananya Bal</title>
+      .projects-table .project-card-row td:first-child {
+        width: 34% !important;
+        padding: 10px 14px !important;
+        vertical-align: middle !important;
+      }
 
-    <meta name="author" content="Ananya Bal">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+      .projects-table .project-card-row td:last-child {
+        width: 66% !important;
+        padding: 18px 24px !important;
+        vertical-align: middle !important;
+        font-size: 16px !important;
+        line-height: 1.45;
+      }
 
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
-  </head>
+      .projects-table .project-card-row td:last-child p,
+      .projects-table .project-card-row td:last-child a,
+      .projects-table .project-card-row td:last-child strong,
+      .projects-table .project-card-row td:last-child em,
+      .projects-table .project-card-row td:last-child u {
+        font-size: 16px !important;
+        line-height: 1.45;
+      }
 
-  <body>
-    <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr style="padding:0px">
-              <td style="padding:2.5%;width:65%;vertical-align:middle">
-                <p class="name" style="text-align: center; font-size:xx-large;">
+      .projects-table .papertitle {
+        font-size: 19px !important;
+        line-height: 1.28;
+      }
+
+      /*
+       * Give every card a genuinely wider visual region without making cards
+       * dramatically taller. The media box is 100% of the image column but
+       * capped at 210px high; object-fit preserves aspect ratio.
+       */
+      .projects-table .project-thumb {
+        width: 100%;
+        height: 210px;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .projects-table .project-card-row td:first-child img {
+        width: 100% !important;
+        height: 210px !important;
+        max-width: 100% !important;
+        max-height: 210px !important;
+        object-fit: contain;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin: 0 auto !important;
+      }
+
+      .projects-table .one {
+        width: 100% !important;
+        height: 210px !important;
+        max-width: none !important;
+      }
+
+      .projects-table .two {
+        width: 100% !important;
+        height: 210px !important;
+      }
+
+      .projects-table .two video {
+        width: 100% !important;
+        height: 210px !important;
+        object-fit: contain;
+      }
+
+      @media (max-width: 760px) {
+        .projects-table {
+          width: calc(100vw - 20px) !important;
+        }
+
+        .projects-table .project-card-row td:first-child {
+          width: 36% !important;
+          padding: 8px !important;
+        }
+
+        .projects-table .project-card-row td:last-child {
+          width: 64% !important;
+          padding: 12px !important;
+          font-size: 14px !important;
+        }
+
+        .projects-table .project-card-row td:last-child p,
+        .projects-table .project-card-row td:last-child a,
+        .projects-table .project-card-row td:last-child strong,
+        .projects-table .project-card-row td:last-child em,
+        .projects-table .project-card-row td:last-child u {
+          font-size: 14px !important;
+        }
+
+        .projects-table .papertitle {
+          font-size: 16px !important;
+        }
+
+        .projects-table .project-thumb,
+        .projects-table .project-card-row td:first-child img,
+        .projects-table .one,
+        .projects-table .two,
+        .projects-table .two video {
+          height: 150px !important;
+          max-height: 150px !important;
+        }
+      }
+    </style>
+<style id="requested-preview-adjustments">
+/* --- Requested second-round preview adjustments --- */
+
+/* Reduce top/profile image by 10%, without changing the header column geometry. */
+img[alt="profile photo"] {
+  width: 90% !important;
+  max-width: 540px !important;
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Add 10pt (~13.33px) to the existing 18px vertical gap between project cards. */
+.projects-table {
+  border-spacing: 0 31.333px !important;
+}
+
+/*
+  Per-card visual scaling.
+  The row's image area stays the same size, so this changes only the visual
+  footprint of the media and does not distort the text/card geometry.
+*/
+.projects-table .project-card-row .project-thumb,
+.projects-table .project-card-row .one {
+  overflow: visible !important;
+}
+
+.projects-table .preview-card-2 td:first-child img {
+  transform: scale(0.85);
+  transform-origin: center center;
+}
+
+.projects-table .preview-card-5 td:first-child img {
+  transform: scale(0.88);
+  transform-origin: center center;
+}
+
+.projects-table .preview-card-6 td:first-child img {
+  transform: scale(0.88);
+  transform-origin: center center;
+}
+
+.projects-table .preview-card-7 td:first-child img {
+  transform: scale(1.15);
+  transform-origin: center center;
+}
+
+.projects-table .preview-card-8 td:first-child img {
+  transform: scale(1.20);
+  transform-origin: center center;
+}
+
+.projects-table .preview-card-9 td:first-child img {
+  transform: scale(1.20);
+  transform-origin: center center;
+}
+
+/*
+  You referred to the final GIF as card 10. In the current preview it is the
+  last visible project row (card 11): "Modeling 3D Deformations..."
+  This applies the requested -10% to that final GIF.
+*/
+.projects-table .preview-card-11 td:first-child img {
+  transform: scale(0.90);
+  transform-origin: center center;
+}
+</style><style id="requested-preview-adjustments-v3">
+/* --- Requested preview v3 adjustments --- */
+
+/* More vertical breathing room in the intro section */
+p.name {
+  margin-bottom: 26px !important;
+}
+
+p[style*="font-size: large"][style*="text-align: justify"] {
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  line-height: 1.45 !important;
+}
+
+/* Extra space after the full intro text block, before the Email/Resume/Github/LinkedIn row */
+p[style*="text-align:center"] {
+  margin-top: 28px !important;
+}
+
+/* Increase vertical gap between all project cards by an additional 10pt over the original */
+.projects-table {
+  border-spacing: 0 31.333px !important;
+}
+
+/* Existing per-card scale adjustments carried forward */
+.projects-table .preview-card-2 td:first-child img {
+  transform: scale(0.85) !important;
+  transform-origin: center center;
+}
+
+.projects-table .preview-card-5 td:first-child img {
+  transform: scale(0.88) !important;
+  transform-origin: center center;
+}
+
+/* Card 6: keep the white-space-heavy image within bounds and visually crop excess */
+.projects-table .preview-card-6 td:first-child .project-thumb {
+  overflow: hidden !important;
+}
+
+.projects-table .preview-card-6 td:first-child img {
+  transform: scale(0.84) !important;
+  transform-origin: center center;
+  clip-path: inset(8% 0 8% 0) !important;
+}
+
+/* Card 7 smaller than before */
+.projects-table .preview-card-7 td:first-child img {
+  transform: scale(0.95) !important;
+  transform-origin: center center;
+}
+
+/* Card 8 smaller than before */
+.projects-table .preview-card-8 td:first-child img {
+  transform: scale(1.02) !important;
+  transform-origin: center center;
+}
+
+/* Card 9 bigger than before */
+.projects-table .preview-card-9 td:first-child img {
+  transform: scale(1.34) !important;
+  transform-origin: center center;
+}
+
+/* Card 10 smaller */
+.projects-table .preview-card-10 td:first-child img {
+  transform: scale(0.90) !important;
+  transform-origin: center center;
+}
+
+/* Final GIF kept slightly smaller */
+.projects-table .preview-card-11 td:first-child img {
+  transform: scale(0.90) !important;
+  transform-origin: center center;
+}
+</style><style id="section-text-size-preview-v4">
+/* --- Slightly larger mid-page section text for visual consistency --- */
+
+/* Section headings: Research Interests, Updates, Selected Projects */
+h2 {
+  font-size: 27px !important;
+  line-height: 1.25 !important;
+}
+
+/* Research Interests body text */
+h2 + p[style*="font-size:medium"] {
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+}
+
+/* Updates list */
+td[style*="list-style-type:square"] ul,
+td[style*="list-style-type:square"] li,
+td[style*="list-style-type:square"] li a {
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+}
+
+/* Give Updates bullets a little more breathing room */
+td[style*="list-style-type:square"] li {
+  margin-bottom: 4px !important;
+}
+</style><style id="project-image-adjustments-v6">
+/* --- Preview v6: rolled back v5 and applied new image choices/sizing --- */
+
+/* Card spacing returns to v4: no extra +8pt from v5. */
+.projects-table {
+  border-spacing: 0 31.333px !important;
+}
+
+/* First project uses the 3-panel GIF at the normal card-media size. */
+.projects-table .preview-card-1 td:first-child img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 210px !important;
+  max-height: 210px !important;
+  transform: none !important;
+  object-fit: contain !important;
+}
+
+/* Card 9: reduce from the previous oversized 1.34x. */
+.projects-table .preview-card-9 td:first-child img {
+  transform: scale(1.16) !important;
+  transform-origin: center center;
+}
+
+/* Card 10: increase from the previous 0.90x. */
+.projects-table .preview-card-10 td:first-child img {
+  transform: scale(1.05) !important;
+  transform-origin: center center;
+}
+
+/* Card 11 GIF: reduce further from the previous 0.90x. */
+.projects-table .preview-card-11 td:first-child img {
+  transform: scale(0.80) !important;
+  transform-origin: center center;
+}
+</style></head>
+<body>
+<table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<tr style="padding:0px">
+<td style="padding:0px">
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<tr style="padding:0px">
+<td style="padding:2.5%;width:65%;vertical-align:middle">
+<p class="name" style="text-align: center; font-size:xx-large;">
                   Ananya Bal
                 </p>
-                <p style="font-size: large; text-align: justify;">I am pursuing my PhD in Robotics at the Robotics Institute, <a href="https://www.cmu.edu/" style="font-size: large;">Carnegie Mellon University</a>. I am advised by <a href="https://www.laszlojeni.com/" style="font-size: large;">Dr. Laszlo Jeni</a> and am currently exploring Dexterous Manipulation, Hand-Object Interaction and World Models. Previously, during my master's at RI, I was advised by <a href="https://www.cs.cmu.edu/~./choset/" style="font-size: large;">Dr. Howie Choset</a> and <a href="https://www.ri.cmu.edu/ri-faculty/john-galeotti/" style="font-size: large;">Dr. John Galeotti</a> 
-                  and worked on implicit neural representations for medical ultrasound and their applications to segmentation, 3D reconstruction and modeling deformation in soft tissue. I am majorly interested in computer vision and robot learning.
-                </p>
-
-                <p style="font-size: large; text-align: justify;"> Before joining CMU, I completed my undergrad in CS from Vellore Institute of Technology where I focused on core ML and NLP projects. I have experience with building recommendation systems, ensemble classifiers, feature-based medical image diagnosis systems, and named-entity recognition models. I briefly interned at Fidelity Investments where I worked on intelligent document layout analysis for automated information retrieval from semi-structured legal documents.
-
-                </p>
-                
-                <p style="text-align:center">
-                  <a href="mailto:abal@andrew.cmu.edu" style="font-size: large;">Email</a> &nbsp;/&nbsp;
-                  <a href="https://drive.google.com/file/d/1uaifxF8ygPgFld5K1TNpiKVE_iu9okIR/view?usp=sharing" style="font-size: large;">Resume</a> &nbsp;/&nbsp;
-                  <a href="https://github.com/AnanyaBal" style="font-size: large;">Github</a> &nbsp;/&nbsp;
+<p style="font-size: large; text-align: justify;">I am pursuing my PhD in Robotics at the Robotics Institute, <a href="https://www.cmu.edu/" style="font-size: large;">Carnegie Mellon University</a>. I am advised by <a href="https://www.laszlojeni.com/" style="font-size: large;">Dr. Laszlo Jeni</a> and am currently exploring World Models, Dexterous Manipulation and Hand-Object Interaction. Most recently, I interned at Apple with VCV and MLR where I explored representation learning for deterministic latent world models.</p>
+<p style="font-size: large; text-align: justify;">Previously, during my master's at RI, I was advised by <a href="https://www.cs.cmu.edu/~./choset/" style="font-size: large;">Dr. Howie Choset</a> and <a href="https://www.ri.cmu.edu/ri-faculty/john-galeotti/" style="font-size: large;">Dr. John Galeotti</a> and worked on implicit neural representations for medical ultrasound and their applications to segmentation, 3D reconstruction and modeling deformation in soft tissue. I am majorly interested in computer vision and robot learning. Before joining CMU, I completed my undergrad in CS from Vellore Institute of Technology where I focused on core ML and NLP projects. I have experience with building recommendation systems, ensemble classifiers, feature-based medical image diagnosis systems, and named-entity recognition models.</p>
+<p style="text-align:center">
+<a href="mailto:abal@andrew.cmu.edu" style="font-size: large;">Email</a>  / 
+                  <a href="https://drive.google.com/file/d/1uaifxF8ygPgFld5K1TNpiKVE_iu9okIR/view?usp=sharing" style="font-size: large;">Resume</a>  / 
+                  <a href="https://github.com/AnanyaBal" style="font-size: large;">Github</a>  / 
                   <a href="https://www.linkedin.com/in/ananyabal/" style="font-size: large;">LinkedIn</a>
-                </p>
-              </td>
-              <td style="padding:2.5%;width:35%;max-width:35%">
-                <a href="images/ananya_nyc.jpeg"><img style="width:100%;max-width:600px" alt="profile photo" src="images/ananya_nyc.jpeg" class="hoverZoomLink"></a>
-                <!-- <a href="images/img1_ab.jpg"><img style="width:100%;max-width:400px" alt="profile photo" src="images/img1_ab.jpg" class="hoverZoomLink"></a> -->
-
-              </td>
-            </tr>
-          </tbody></table>
-
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-              <tr>
-              <td style="padding:20px;width:100%;vertical-align:middle">
-                <h2>Research Interests</h2>
-                <p style="font-size:medium;">
+</p>
+</td>
+<td style="padding:2.5%;width:35%;max-width:35%">
+<a href="images/ananya_nyc.jpeg"><img alt="profile photo" class="hoverZoomLink" src="images/ananya_nyc.jpeg" style="width:100%;max-width:600px"/></a>
+<!-- <a href="images/img1_ab.jpg"><img style="width:100%;max-width:400px" alt="profile photo" src="images/img1_ab.jpg" class="hoverZoomLink"></a> -->
+</td>
+</tr>
+</tbody></table>
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<tr>
+<td style="padding:20px;width:100%;vertical-align:middle">
+<h2>Research Interests</h2>
+<p style="font-size:medium;">
                   3D Perception, Dexterous manipulation, Foundation Models for Robotics, Generative Models
                 </p>
-              </td>
-            </tr>
-          </tbody></table>
-
-        
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-            <td style="padding:20px;width:100%;vertical-align:middle;list-style-type:square">
-              <h2>Updates</h2>
-              <p>
-                <ul>
-                  <!-- <li>Dec 2023: Presented my MSR Thesis Talk on 'Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions' (<a href="https://cmu.zoom.us/rec/share/I0sAtJUwshefDgruYBrt4Hdq3r7e9F6FlYYs4gq3G9EgYVcns1YtBDdO6NIG4Uls._e1PBGQn6qTPiPkW" View Recording</a> Password = 7cc?LX!B ). </a></li> -->
-                  <li>Upcoming: I will be interning this summer at Apple Inc, woring on World Models for Robotics.</li>
-                  <li>Mar 2024: Accepted CMU's offer for the Robotics PhD program. (I'm going to be a doctor!)
+</td>
+</tr>
+</tbody></table>
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<tr>
+<td style="padding:20px;width:100%;vertical-align:middle;list-style-type:square">
+<h2>Updates</h2>
+<p>
+<ul>
+<!-- <li>Dec 2023: Presented my MSR Thesis Talk on 'Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions' (<a href="https://cmu.zoom.us/rec/share/I0sAtJUwshefDgruYBrt4Hdq3r7e9F6FlYYs4gq3G9EgYVcns1YtBDdO6NIG4Uls._e1PBGQn6qTPiPkW" View Recording</a> Password = 7cc?LX!B ). </a></li> -->
+<li>Upcoming: I will be interning this summer at Apple Inc, woring on World Models for Robotics.</li>
+<li>Mar 2024: Accepted CMU's offer for the Robotics PhD program. (I'm going to be a doctor!)
                   <li>Dec 2023: Presented my MSR Thesis Talk on  <a href="https://drive.google.com/file/d/1TcHMTQai2XM32Okoj3vnhIGU5Gg_Gcoc/view?usp=drive_link"> Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions</a>.</li>
-                  <!-- <li>Oct 2023: Presented paper on <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">Automated Void Detection</a> at IROS. </li>
+<!-- <li>Oct 2023: Presented paper on <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">Automated Void Detection</a> at IROS. </li>
                   <li>Oct 2023: Our paper <a href="https://arxiv.org/abs/2306.13329">on unsupervised deformable registration </a>was presented at IROS 2023.</li>
                   <li>May 2023: My work in Document Layout Understanding with vision and NLP during my internship at Fidelity Investments was granted a <a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/11657078">US Patent</a>. </li>
                   <li>May 2023: Presented paper on <a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">automated ultrasound scanning with RGBD sensing</a> at ICRA 2023. </li>
                   <li>May 2023: Presented a workshop paper on <a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf"> 3D Deformation Simulation for Vascular Tissue. </a> </li>
                   <li>Nov 2022: Presented a paper on <a href="A Comparison of Point Cloud Registration Techniques for on-site Disaster Data from the Surfside Structural Collapse"> comparing point cloud registration methods for large, real world disaster scenes. </a> 
                   <li>Sept 2021: Started my masters at Robotics Institute, Carnegie Mellon. </li> -->
-                  
-                </ul>
-               </p>
-            </td>
-          </tr>
-        </tbody></table>
-          <br>
-          
-          <table style="width:100%;border:0px;border-spacing:0px 18px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <h2 style="margin-bottom:16px;">Selected Projects</h2>
-              <!-- Cross-Embodiment World Model -->
-            <tr class="project-card-row">
-              <td style="padding:1px;width:25%;vertical-align:middle">
-                <div class="project-thumb">
-                  <img
-                    src="images/egodex-fourier-robocasa_pair1_stagger.gif"
-                    width="250"
-                    style="display:block; max-width:100%; height:auto;"
-                    alt="Cross-embodiment action transfer"
-                  >
-                </div>
-              </td>
-            
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <span class="papertitle">
-                  Cross-Embodiment Learning in World Models for Dexterous Manipulation
-                </span>
-                <br>
-            
-                <strong><u>Ananya Bal</u></strong>
-            
-                <br>
-                <p></p>
-            
-                <p>
-                  Learning transferable action representations across human and robotic
-                  embodiments in world models for dexterous manipulation.
-                </p>
-              </td>
-            </tr>
-            
-            
-            <!-- Embodiment-Aware Generation of Hand-Object Interactions -->
-            <tr class="project-card-row">
-              <td style="padding:1px;width:25%;vertical-align:middle">
-                <div class="project-thumb">
-                  <img class="pri4r-img" src="images/mayavi.gif" width="165">
-                </div>
-              </td>
-            
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <span class="papertitle">
-                  Embodiment-Aware Generation of Hand-Object Interactions
-                </span>
-            
-                <br>
-            
-                <strong>Chaitanya Chawla*, <u>Ananya Bal*</u></strong>,
-                Kartik Sharma, Laszlo A. Jeni, Guanya Shi
-            
-                <br>
-            
-                <a href="https://drive.google.com/file/d/1v1jJTPdgkPusj7UIGmRbCw59zYhAKZ86/view?usp=drive_link">
-                  Preprint
-                </a>
-            
-                <br>
-                <p></p>
-            
-                <p>
-                  Embody-HOI applies kinematic guidance to diffusion-based motion generation
-                  methods, resulting in more feasible dexterous, human reference trajectories
-                  that robots can carry out in sim with minimal reinforcement learning for
-                  object dynamics.
-                </p>
-              </td>
-            </tr>
-
-            <tr class="project-card-row">
-              <td style="padding:1px;width:25%;vertical-align:middle">
-                <div class="project-thumb">
-                  <img class="madhoi-img" src="images/MAD-HOI_res.png" width="250">
-                </div>
-              </td>
-            
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                  <span class="papertitle">MAD-HOI: Masked Autoregressive Diffusion for Generating Articulated Hand Object Interactions from Text</span>
-                
-                <br>
-                <strong><u>Ananya Bal</u></strong>,
-                Kartik Sharma,
-                Ethan Lai,
-                Samyak Jain,
-                Liza Dahiya,
-                Chaitanya Chawla,
-                Laszlo Jeni
-                <br>
-                <a href="https://arxiv.org/abs/2608.10162">Preprint </a> | 
-                <a href = "MAD-HOI_supplementary_3D_visualizations/visualize_hoi_motions.html"> Interactive Website</a>
-                <br> 
-                <p></p>
-                <p >
-                  The first work to propose Masked Autoregressive Diffusion for Hand Object Interaction Motion Generation from text - allowing articulated stream-wise motion generation, motion completion, infilling, and compositing, without relying on length inputs. Sequence end is detected from predicted end tokens. 
-                </p>
-              </td>
-            </tr>
-
-             <tr class="project-card-row" onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
-              <td style="padding:1px;width:25%;vertical-align:middle">
-                <div class="project-thumb">
-                  <img class="pri4r-img" src='images/pri4r_main_fig_page.jpg' width="250">
-                </div>
-                <script type="text/javascript">
+</li></ul>
+</p>
+</td>
+</tr>
+</tbody></table>
+<br/>
+<table class="projects-table" style="width:100%;border:0px;border-spacing:0px 18px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<h2 style="margin-bottom:16px;">Selected Projects</h2>
+<!-- Cross-Embodiment World Model -->
+<tr class="project-card-row preview-card-1">
+<td style="padding:1px;width:25%;vertical-align:middle">
+<div class="project-thumb">
+<img alt="Cross-embodiment action transfer across three embodiments" src="images/egodex-fourier_robocasa_pair1_stagger_3panel.gif"/>
+</div>
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<span class="papertitle">Cross-Embodiment Learning in World Models for Dexterous Manipulation</span>
+<br/>
+<strong><u>Ananya Bal</u></strong>
+<br/>
+<p></p>
+<p>
+                    Learning transferable action representations across human and robotic embodiments
+                    in world models for dexterous manipulation.
+                  </p>
+</td>
+</tr>
+<tr class="project-card-row preview-card-2" onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
+<td style="padding:1px;width:25%;vertical-align:middle">
+<div class="project-thumb">
+<img class="pri4r-img" src="images/mayavi.gif" width="165"/>
+</div>
+<script type="text/javascript">
                   function unerf1_start() {
                     document.getElementById('unerf_image').style.opacity = "1";
                   }
@@ -198,26 +430,89 @@
                   }
                   unerf1_stop()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-            
-                  <span class="papertitle">Pri4R: Learning World Dynamics for Vision-Language-Action Models with Privileged 4D Representation</span>
-                
-                <br>
-                <strong>Jisoo Kim*, Jungbin Cho*</strong>, Sanghyeok Chu, <u>Ananya Bal</u>, Jinhyung Kim, Gunhee Lee, Sihaeng Lee, Seung Hwan Kim, Bohyung Han, Hyunmin Lee, Laszlo A. Jeni, Seungryong Kim
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<span class="papertitle">Embodiment-Aware Generation of Hand-Object Interactions</span>
+<br/>
+<strong>Chaitanya Chawla*, <u>Ananya Bal*</u></strong>, Kartik Sharma, Laszlo A. Jeni, Guanya Shi
                
-                <br>
-                <a href="https://arxiv.org/abs/2603.01549">Preprint</a> |
-                <a href = "https://jiiiisoo.github.io/Pri4R/"> Website</a>
-                <br> 
-                <p></p>
-                <p >
+                <br/>
+<a href="https://drive.google.com/file/d/1v1jJTPdgkPusj7UIGmRbCw59zYhAKZ86/view?usp=drive_link">Preprint</a>
+<br/>
+<p></p>
+<p>
+                  Embody-HOI applies kinematic guidance to diffusion-based motion generation methods, resulting in more feasible dexterous, human reference trajectories that robots can carry out in sim with minimal reinforcement learning for object dynamics.
+                </p>
+</td>
+</tr>
+<tr class="project-card-row preview-card-3" onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
+<td style="padding:1px;width:25%;vertical-align:middle">
+<div class="project-thumb">
+<img src="images/MAD-HOI_res.png" style="padding: 15px 0;" width="250"/>
+</div>
+<script type="text/javascript">
+                  function unerf1_start() {
+                    document.getElementById('unerf_image').style.opacity = "1";
+                  }
+      
+                  function unerf1_stop() {
+                    document.getElementById('unerf_image').style.opacity = "0";
+                  }
+                  unerf1_stop()
+                </script>
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<span class="papertitle">MAD-HOI: Masked Autoregressive Diffusion for Generating Articulated Hand Object Interactions from Text</span>
+<br/>
+<strong><u>Ananya Bal</u></strong>,
+                Kartik Sharma,
+                Ethan Lai,
+                Samyak Jain,
+                Liza Dahiya,
+                Chaitanya Chawla,
+                Laszlo Jeni
+                <br/>
+<a href="https://arxiv.org/abs/2608.10162">Preprint </a> | 
+                <a href="MAD-HOI_supplementary_3D_visualizations/visualize_hoi_motions.html"> Interactive Website</a>
+<br/>
+<p></p>
+<p>
+                  The first work to propose Masked Autoregressive Diffusion for Hand Object Interaction Motion Generation from text - allowing articulated stream-wise motion generation, motion completion, infilling, and compositing, without relying on length inputs. Sequence end is detected from predicted end tokens. 
+                </p>
+</td>
+</tr>
+<tr class="project-card-row preview-card-4" onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
+<td style="padding:1px;width:25%;vertical-align:middle">
+<div class="project-thumb">
+<img class="pri4r-img" src="images/pri4r_main_fig_page.jpg" width="250"/>
+</div>
+<script type="text/javascript">
+                  function unerf1_start() {
+                    document.getElementById('unerf_image').style.opacity = "1";
+                  }
+      
+                  function unerf1_stop() {
+                    document.getElementById('unerf_image').style.opacity = "0";
+                  }
+                  unerf1_stop()
+                </script>
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<span class="papertitle">Pri4R: Learning World Dynamics for Vision-Language-Action Models with Privileged 4D Representation</span>
+<br/>
+<strong>Jisoo Kim*, Jungbin Cho*</strong>, Sanghyeok Chu, <u>Ananya Bal</u>, Jinhyung Kim, Gunhee Lee, Sihaeng Lee, Seung Hwan Kim, Bohyung Han, Hyunmin Lee, Laszlo A. Jeni, Seungryong Kim
+               
+                <br/>
+<a href="https://arxiv.org/abs/2603.01549">Preprint</a> |
+                <a href="https://jiiiisoo.github.io/Pri4R/"> Website</a>
+<br/>
+<p></p>
+<p>
                   Pri4R equips Vision Language Action (VLA) models with an implicit awareness of action-world dynamics through privileged 4D geometric supervision. We leverage 3D point tracks as an auxiliary signal to revise the latent representation of VLMs into a dynamics-aware state.
                 </p>
-              </td>
-            </tr>
-
-            <!-- <tr onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
+</td>
+</tr>
+<!-- <tr onmouseout="unerf1_stop()" onmouseover="unerf1_start()">
               <td style="padding:1px;width:25%;vertical-align:middle">
                 <div class="one">
                   <div class="two" id='unerf_image'><video  width=100% height=100% muted autoplay loop>
@@ -256,17 +551,16 @@
                 </p>
               </td>
             </tr> -->
-      
-            <tr class="project-card-row" onmouseout="unerf2_stop()" onmouseover="unerf2_start()">
-              <td style="padding:1px;width:25%;vertical-align:middle">
-                <div class="one project-thumb">
-                  <div class="two" id='unerf_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/unerf-video.mp4" type="video/mp4">
+<tr class="project-card-row preview-card-5" onmouseout="unerf2_stop()" onmouseover="unerf2_start()">
+<td style="padding:1px;width:25%;vertical-align:middle">
+<div class="one project-thumb">
+<div class="two" id="unerf_image"><video autoplay="" height="100%" loop="" muted="" width="100%">
+<source src="images/unerf-video.mp4" type="video/mp4"/>
                   Your browser does not support the video tag.
                   </video></div>
-                  <img class="card3-thumb" src='images/3Drecon.png' width="225">
-                </div>
-                <script type="text/javascript">
+<img class="card3-thumb" src="images/3Drecon.png" width="225"/>
+</div>
+<script type="text/javascript">
                   function unerf2_start() {
                     document.getElementById('unerf_image').style.opacity = "1";
                   }
@@ -276,38 +570,34 @@
                   }
                   unerf2_stop()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-               
-                  <span class="papertitle">Implicit Shape Representation for 3D Anatomy Reconstruction from Ultrasound Images </span>
-                
-                <br>
-                <strong><u>Ananya Bal</u></strong>,
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<span class="papertitle">Implicit Shape Representation for 3D Anatomy Reconstruction from Ultrasound Images </span>
+<br/>
+<strong><u>Ananya Bal</u></strong>,
                 Magdalena Wysocki,
                 Mohammad Farid Azampour,
                 John Galeotti,
                 Howie Choset
-                <br>
-                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true#slide=51">Slides</a> 
-                <br> 
-                <p></p>
-                <p>
+                <br/>
+<a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&amp;ouid=108888989072243722258&amp;rtpof=true&amp;sd=true#slide=51">Slides</a>
+<br/>
+<p></p>
+<p>
                 Weakly supervised volumetric implicit shape representation method. Applied to 3D anatomy reconstruction from multi-view 2D ultrasound images trhough Ultra-NeRF.
                 </p>
-              </td>
-            </tr>
-
-
-            <tr class="project-card-row" onmouseout="unerf3_stop()" onmouseover="unerf3_start()">
-              <td style="padding:1px;width:25%;vertical-align:middle">
-                <div class="one project-thumb">
-                  <div class="two" id='unerf_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/unerf-video.mp4" type="video/mp4">
+</td>
+</tr>
+<tr class="project-card-row preview-card-6" onmouseout="unerf3_stop()" onmouseover="unerf3_start()">
+<td style="padding:1px;width:25%;vertical-align:middle">
+<div class="one project-thumb">
+<div class="two" id="unerf_image"><video autoplay="" height="100%" loop="" muted="" width="100%">
+<source src="images/unerf-video.mp4" type="video/mp4"/>
                   Your browser does not support the video tag.
                   </video></div>
-                  <img class="card4-thumb" src='images/psf.png' width="225">
-                </div>
-                <script type="text/javascript">
+<img class="card4-thumb" src="images/psf.png" width="225"/>
+</div>
+<script type="text/javascript">
                   function unerf3_start() {
                     document.getElementById('unerf_image').style.opacity = "1";
                   }
@@ -317,38 +607,34 @@
                   }
                   unerf3_stop()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                
-                  <span class="papertitle">Ultra-NeRF++: Learning Imaging System Properties in addition to Scene Parameters</span>
-                
-                <br>
-                <strong><u>Ananya Bal</u></strong>,
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<span class="papertitle">Ultra-NeRF++: Learning Imaging System Properties in addition to Scene Parameters</span>
+<br/>
+<strong><u>Ananya Bal</u></strong>,
                 Magdalena Wysocki,
                 Mohammad Farid Azampour,
                 John Galeotti,
                 Howie Choset
-                <br>
-                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true#slide=29">Slides</a> 
-                <br> 
-                <p></p>
-                <p>
+                <br/>
+<a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&amp;ouid=108888989072243722258&amp;rtpof=true&amp;sd=true#slide=29">Slides</a>
+<br/>
+<p></p>
+<p>
                 Enhanced Ultra-NeRF by approximating spatially varying Point Spread Functions for the ultrasound imaging system in addition to the tissue reflectivity function of the scene. Network architecture also improved for rednering high-frequency artifacts.
                 </p>
-              </td>
-            </tr>
-
-
-            <tr class="project-card-row" onmouseout="NSF()" onmouseover="NSF_start()" >
-              <td style="padding:0px;width:25%;vertical-align:middle">
-                <div class="one project-thumb">
-                  <div class="two" id='NSF_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/IROS_GA.png" type="video/mp4">
+</td>
+</tr>
+<tr class="project-card-row preview-card-7" onmouseout="NSF()" onmouseover="NSF_start()">
+<td style="padding:0px;width:25%;vertical-align:middle">
+<div class="one project-thumb">
+<div class="two" id="NSF_image"><video autoplay="" height="100%" loop="" muted="" width="100%">
+<source src="images/IROS_GA.png" type="video/mp4"/>
                   Your browser does not support the video tag.
                   </video></div>
-                  <img src='images/IROS_GA.png' width="225">
-                </div>
-                <script type="text/javascript">
+<img src="images/IROS_GA.png" width="225"/>
+</div>
+<script type="text/javascript">
                   function NSF_start() {
                     document.getElementById('NSF_image').style.opacity = "1";
                   }
@@ -358,43 +644,40 @@
                   }
                   NSF()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">
-                  <span class="papertitle">Towards Automated Void Detection for Search and Rescue with 3D Perception <strong></strong></span>
-                </a>
-                <br>
-                <strong><u>Ananya Bal</u></strong>,
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">
+<span class="papertitle">Towards Automated Void Detection for Search and Rescue with 3D Perception <strong></strong></span>
+</a>
+<br/>
+<strong><u>Ananya Bal</u></strong>,
                 Ashutosh Gupta,
                 Pranav Goyal,
                 David Merrick,
                 Robin Murphy,
                 Howie Choset
-                <br>
-                <em>IROS</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-                <br>
-                <a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">Paper</a> | 
+                <br/>
+<em>IROS</em>, 2023   <font color="red"><strong>(Oral Presentation)</strong></font>
+<br/>
+<a href="https://drive.google.com/file/d/1wi-rQf8pw8ItL9HGYv4lOA1Vcknu87Bt/view?usp=drive_link">Paper</a> | 
                 <a href="https://drive.google.com/file/d/1eZUWeSbD16lksmu7lgs7m0_HfgZ2Izs6/view?usp=sharing">Poster</a> | 
                 <a href="https://youtu.be/2q1_Dw3VITU">Video</a>
-                <p></p>
-                <p>
+<p></p>
+<p>
                 A novel layering-based point cloud processing approach using NetVLAD and COLMAP for improved registration and void detection in disaster scenes. 
                 </p>
-              </td>
-            </tr>
-     
-      
-
-            <tr class="project-card-row" onmouseout="uraft_stop()" onmouseover="uraft_start()">
-              <td style="padding:20px;width:25%;vertical-align:middle">
-                <div class="one project-thumb">
-                  <div class="two" id='uraft_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/uraft-video.mp4" type="video/mp4">
+</td>
+</tr>
+<tr class="project-card-row preview-card-8" onmouseout="uraft_stop()" onmouseover="uraft_start()">
+<td style="padding:20px;width:25%;vertical-align:middle">
+<div class="one project-thumb">
+<div class="two" id="uraft_image"><video autoplay="" height="100%" loop="" muted="" width="100%">
+<source src="images/uraft-video.mp4" type="video/mp4"/>
                   Your browser does not support the video tag.
                   </video></div>
-                  <img src='images/uraft-image.png' width="160" padding= "0px 0px 0px 150px" >
-                </div>
-                <script type="text/javascript">
+<img padding="0px 0px 0px 150px" src="images/uraft-image.png" width="160"/>
+</div>
+<script type="text/javascript">
                   function uraft_start() {
                     document.getElementById('uraft_image').style.opacity = "1";
                   }
@@ -404,39 +687,38 @@
                   }
                   uraft_stop()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://arxiv.org/abs/2306.13329">
-                  <span class="papertitle">U-RAFT: Unsupervised Deformable Ultrasound Image Registration and Its Application for Vessel Segmentation</span>
-                </a>
-                <br>
-                <strong>FNU Abhimanyu</strong>,
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<a href="https://arxiv.org/abs/2306.13329">
+<span class="papertitle">U-RAFT: Unsupervised Deformable Ultrasound Image Registration and Its Application for Vessel Segmentation</span>
+</a>
+<br/>
+<strong>FNU Abhimanyu</strong>,
                 Andrew L. Orekhov,
                 <u>Ananya Bal</u>,
                 John Galeotti,
                 Howie Choset
-                <br>
-                <em>IROS</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-                <br> 
-                <a href="https://arxiv.org/abs/2306.13329">Paper</a> | <a href="https://youtu.be/3MaZpBA2jaQ">Video</a>
-                <p></p>
-                <p>
+                <br/>
+<em>IROS</em>, 2023   <font color="red"><strong>(Oral Presentation)</strong></font>
+<br/>
+<a href="https://arxiv.org/abs/2306.13329">Paper</a> | <a href="https://youtu.be/3MaZpBA2jaQ">Video</a>
+<p></p>
+<p>
                 Making RAFT training unsupervised and applying it to predict vessel deformation under forces in ultrasound images. 
                 We use this further to generate ultrasound images at multiple force values and improve segmentation by 12%
                 </p>
-              </td>
-            </tr>
-            
-            <tr class="project-card-row" onmouseout="sofa_stop()" onmouseover="sofa_start()">
-              <td style="padding:1px;width:25%;vertical-align:top">
-                <div class="one project-thumb">
-                  <div class="two" id='sofa_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/sofa-video.mp4" type="video/mp4">
+</td>
+</tr>
+<tr class="project-card-row preview-card-9" onmouseout="sofa_stop()" onmouseover="sofa_start()">
+<td style="padding:1px;width:25%;vertical-align:top">
+<div class="one project-thumb">
+<div class="two" id="sofa_image"><video autoplay="" height="100%" loop="" muted="" width="100%">
+<source src="images/sofa-video.mp4" type="video/mp4"/>
                   Your browser does not support the video tag.
                   </video></div>
-                  <img src='images/sofa2.png' width="220">
-                </div>
-                <script type="text/javascript">
+<img src="images/sofa2.png" width="220"/>
+</div>
+<script type="text/javascript">
                   function sofa_start() {
                     document.getElementById('sofa_image').style.opacity = "1";
                   }
@@ -446,40 +728,36 @@
                   }
                   sofa_stop()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">
-                  <span class="papertitle">3D Deformation Simulation for Vascular Tissue with 2D Medical Imaging</span>
-                </a>
-                <br>
-                <strong><u>Ananya Bal</u></strong>, Ashutosh Gupta, Ceci Morales, Artur Dubrawski, John Galeotti, Howie Choset
-                <br>
-                <em>ICRA Workshop <a href="https://deformable-workshop.github.io/icra2023/">(3rd Workshop on Representing and Manipulating Deformable Objects)</a></em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-                <br> 
-                <a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">Paper</a> | 
-                <a href="https://drive.google.com/file/d/1vInUkBHyF0HLqYwLDVicPfDa6ww4_TR7/view?usp=sharing">Poster</a> 
-                <p></p>
-                <p>
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">
+<span class="papertitle">3D Deformation Simulation for Vascular Tissue with 2D Medical Imaging</span>
+</a>
+<br/>
+<strong><u>Ananya Bal</u></strong>, Ashutosh Gupta, Ceci Morales, Artur Dubrawski, John Galeotti, Howie Choset
+                <br/>
+<em>ICRA Workshop <a href="https://deformable-workshop.github.io/icra2023/">(3rd Workshop on Representing and Manipulating Deformable Objects)</a></em>, 2023   <font color="red"><strong>(Oral Presentation)</strong></font>
+<br/>
+<a href="https://deformable-workshop.github.io/icra2023/spotlight/27-Bal-Spotlight.pdf">Paper</a> | 
+                <a href="https://drive.google.com/file/d/1vInUkBHyF0HLqYwLDVicPfDa6ww4_TR7/view?usp=sharing">Poster</a>
+<p></p>
+<p>
                   A 3D deformation simulation framework where we reduce the sim2real gap by optimizing for
                   material properties through maximizing IoU of the vessel area
                   from the simulation and the real-world ultrasound images. 
                 </p>
-              </td>
-            </tr>
-
-
-
-
-            <tr class="project-card-row" onmouseout="icra_stop()" onmouseover="icra_start()">
-              <td style="padding:1px;width:25%;vertical-align:top">
-                <div class="one project-thumb">
-                  <div class="two" id='icra_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/icra-video.mp4" type="video/mp4">
+</td>
+</tr>
+<tr class="project-card-row preview-card-10" onmouseout="icra_stop()" onmouseover="icra_start()">
+<td style="padding:1px;width:25%;vertical-align:top">
+<div class="one project-thumb">
+<div class="two" id="icra_image"><video autoplay="" height="100%" loop="" muted="" width="100%">
+<source src="images/icra-video.mp4" type="video/mp4"/>
                   Your browser does not support the video tag.
                   </video></div>
-                  <img src='images/icra2.png' width="250">
-                </div>
-                <script type="text/javascript">
+<img src="images/icra2.png" width="250"/>
+</div>
+<script type="text/javascript">
                   function icra_start() {
                     document.getElementById('icra_image').style.opacity = "1";
                   }
@@ -489,42 +767,37 @@
                   }
                   icra_stop()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">
-                  <span class="papertitle">A Curvature and Trajectory Optimization-based 3D
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">
+<span class="papertitle">A Curvature and Trajectory Optimization-based 3D
                     Surface Reconstruction Pipeline for Ultrasound
                     Trajectory Generation</span>
-                </a>
-                <br>
-                <strong><u>Ananya Bal</u></strong>, Ashutosh Gupta, FNU Abhimanyu, John Galeotti, Howie Choset
-                <br>
-                <em>ICRA</em>, 2023 &nbsp <font color="red"><strong>(Oral Presentation)</strong></font>
-                <br> 
-                <a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">Paper</a> | 
+</a>
+<br/>
+<strong><u>Ananya Bal</u></strong>, Ashutosh Gupta, FNU Abhimanyu, John Galeotti, Howie Choset
+                <br/>
+<em>ICRA</em>, 2023   <font color="red"><strong>(Oral Presentation)</strong></font>
+<br/>
+<a href="http://biorobotics.ri.cmu.edu/papers/paperUploads/Bal_ICRA23_Curvature_and_Trajectory_Optimization_based_3D_Surface_Reconstruction.pdf">Paper</a> | 
                 <a href="https://drive.google.com/file/d/1U5COYoaRkKytzx0OCScCleDkdaLLXeMN/view?usp=sharing">Poster</a> | 
                 <a href="https://youtu.be/C5HkrkUr0zQ">Video</a>
-                <p></p>
-
-              
-                <p>
+<p></p>
+<p>
                   A 3D reconstruction optimization-based method to identify a high curvature region for autonomous ultrasound scanning. A novel, comprehensive 3D reconstruction evaluation score is proposed. 
                 </p>
-              </td>
-            </tr>
-
-         
-
-            <tr class="project-card-row" onmouseout="three_d_defom_stop()" onmouseover="three_d_defom_start()">
-              <td style="padding:1px;width:25%;vertical-align:bottom">
-                <div class="one">
-                  <div class="two" id='three_d_defom_image'><video  width=100% height=100% muted autoplay loop>
-                  <source src="images/three_d_defom-video.mp4" type="video/mp4">
+</td>
+</tr>
+<tr class="project-card-row preview-card-11" onmouseout="three_d_defom_stop()" onmouseover="three_d_defom_start()">
+<td style="padding:1px;width:25%;vertical-align:bottom">
+<div class="one">
+<div class="two" id="three_d_defom_image"><video autoplay="" height="100%" loop="" muted="" width="100%">
+<source src="images/three_d_defom-video.mp4" type="video/mp4"/>
                   Your browser does not support the video tag.
                   </video></div>
-                  <img class="last-gif-center" src='images/pc_undeformed.gif' width="200" style="display:block;margin-left:auto;margin-right:auto;">
-                </div>
-                <script type="text/javascript">
+<img class="last-gif-center" src="images/pc_undeformed.gif" style="display:block;margin-left:auto;margin-right:auto;" width="200"/>
+</div>
+<script type="text/javascript">
                   function three_d_defom_start() {
                     document.getElementById('three_d_defom_image').style.opacity = "1";
                   }
@@ -534,61 +807,55 @@
                   }
                   three_d_defom_stop()
                 </script>
-              </td>
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://stump-mail-041.notion.site/16-824-Project-Modeling-3D-Deformations-under-External-Force-from-2D-Images-033da9be9d734d5ba7e0f8b55d7929cf">
-                  <span class="papertitle">Modeling 3D Deformations under External Force from 2D Images</span>
-                </a>
-                <br>
-                <strong><u>Ananya Bal</u></strong>, FNU Abhimanyu
-                <br>
-                <em>Presented in 16-824, Visual Learning and Recognition by Prof. Deepak Pathak</em>. &nbsp <font color="red"></font>
-                <p></p>
-                <p>
+</td>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<a href="https://stump-mail-041.notion.site/16-824-Project-Modeling-3D-Deformations-under-External-Force-from-2D-Images-033da9be9d734d5ba7e0f8b55d7929cf">
+<span class="papertitle">Modeling 3D Deformations under External Force from 2D Images</span>
+</a>
+<br/>
+<strong><u>Ananya Bal</u></strong>, FNU Abhimanyu
+                <br/>
+<em>Presented in 16-824, Visual Learning and Recognition by Prof. Deepak Pathak</em>.   <font color="red"></font>
+<p></p>
+<p>
                   Our pipeline learns deformation using 3D point clouds of the deforming object, material properties, force and its point of application and predicts a deformed version of the object. 
                   As we go from images to point clouds, our method uses 2D RGB images to learn 3D deformations.
                 </p>
-              </td>
-            </tr>
-          </tbody></table>
-
-          <br>
-
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <h2>Master's Thesis</h2>
-
-
-           
-              <td style="padding:20px;width:75%;vertical-align:middle">
-                <a href="https://www.ri.cmu.edu/publications/neural-implicit-representations-for-medical-ultrasound-volumes-and-3d-anatomy-specific-reconstructions/">
-                  <span class="papertitle">Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions</span>
-                </a>
-                <br>
-                <strong><u>Ananya Bal</u></strong>
-                
-                <br>
-                <a href="https://drive.google.com/file/d/1TcHMTQai2XM32Okoj3vnhIGU5Gg_Gcoc/view?usp=drive_link">Document</a> | 
-                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&ouid=108888989072243722258&rtpof=true&sd=true#slide=1">Slides</a> |
+</td>
+</tr>
+</tbody></table>
+<br/>
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<h2>Master's Thesis</h2>
+<td style="padding:20px;width:75%;vertical-align:middle">
+<a href="https://www.ri.cmu.edu/publications/neural-implicit-representations-for-medical-ultrasound-volumes-and-3d-anatomy-specific-reconstructions/">
+<span class="papertitle">Neural Implicit Representations for Medical Ultrasound Volumes and 3D Anatomy-specific Reconstructions</span>
+</a>
+<br/>
+<strong><u>Ananya Bal</u></strong>
+<br/>
+<a href="https://drive.google.com/file/d/1TcHMTQai2XM32Okoj3vnhIGU5Gg_Gcoc/view?usp=drive_link">Document</a> | 
+                <a href="https://docs.google.com/presentation/d/1BhFVg-i1LNrboO1ILJRkd3sS6CH_eafu/edit?usp=sharing&amp;ouid=108888989072243722258&amp;rtpof=true&amp;sd=true#slide=1">Slides</a> |
                 <a href="https://cmu.zoom.us/rec/share/I0sAtJUwshefDgruYBrt4Hdq3r7e9F6FlYYs4gq3G9EgYVcns1YtBDdO6NIG4Uls._e1PBGQn6qTPiPkW ">Presentation Video</a> (Passcode: 7cc?LX!B)
-                <br> 
-                <p></p>
-                <p style="text-align: justify;">
+                <br/>
+<p></p>
+<p style="text-align: justify;">
                   Most Robotic Ultrasound Systems (RUSs) equipped with ultrasound-interpreting algorithms rely on building 3D reconstructions of the entire scanned region or specific anatomies. These 3D reconstructions are typically created via methods that compound or stack 2D tomographic ultrasound images using known poses of the ultrasound transducer with the latter requiring 2D or 3D segmentation. While fast, this class of methods has many shortcomings. It requires interpolation-based gap-filling or extensive compounding and still yields volumes that generate implausible novel views. Additionally, storing these volumes can be memory-intensive.
-                  <br>
+                  <br/>
                   These challenges can be overcome with neural implicit learning which provides interpolation in unobserved gaps through a smooth learned function as well as a lighter representation for the volume in terms of memory. In this thesis, a neural implicit representation (NIR) based on the physics of ultrasound image formation is presented.
                   <span id="dots">...</span>
-                  <span id="more" style="display: none;">
+<span id="more" style="display: none;">
                     With this NIR, a physically-grounded version of tissue reflectivity function (TRF) is learned by regression using observed intensities in ultrasound images. Additionally, this NIR also learns a spatially-varying point spread function (PSF) of the ultrasound imaging system to improve the photorealism of rendered images. The TRF learned through this method can handle contrasting observations from different viewing-directions due to a differentiable rendering function that incorporates the angle of incidence between ultrasound rays and the tissue interfaces in the scanned volume. It is a stable representation of the tissue volume that when combined with the viewing-direction, can produce true-to-orientation ultrasound images.
-                  <br>
+                  <br/>
                   Given that many diagnostic and surgical applications, robotic or otherwise, require anatomy-specific 3D reconstructions, it is not sufficient to learn entire ultrasound volumes without discerning the required anatomies. To circumvent the use of traditional 3D segmentation methods that are computationally-heavy, I demonstrate that the obtained TRF can be used to learn a neural implicit shape representation for anatomies that are largely homogeneous. This is formulated as a weakly-supervised binary voxel occupancy function that is learned in parallel with the NIR. All these contributions are substantiated on simulated, phantom-acquired and live subject-acquired ultrasound images capturing blood vessels. Finally, an application for the anatomy-specific reconstruction is discussed in the context of physical simulations for deformation modeling of soft tissue. 
                 </span>
-                </p>
-                <button onclick="toggleReadMore()" style="cursor: pointer;">
-                  <span id="readMoreBtn">Read More</span>
-                </button>
-              </td>
-            </tr>
-            <script>
+</p>
+<button onclick="toggleReadMore()" style="cursor: pointer;">
+<span id="readMoreBtn">Read More</span>
+</button>
+</td>
+</tbody></table></td></tr>
+<script>
               function toggleReadMore() {
                 var dots = document.getElementById("dots");
                 var moreText = document.getElementById("more");
@@ -605,20 +872,16 @@
                 }
               }
             </script>
-          
-          </tbody></table>
-          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-            <tr>
-              <td style="padding:0px">
-                <br>
-                <p style="text-align:right;font-size:small;">
-                  Feel free to steal this website's <a href="https://github.com/jonbarron/jonbarron_website">source code</a>. <strong>Do not</strong> scrape the HTML from this page itself, as it includes analytics tags that you do not want on your own website &mdash; use the github code instead. Also, consider using <a href="https://leonidk.com/">Leonid Keselman</a>'s <a href="https://github.com/leonidk/new_website">Jekyll fork</a> of this page.
+</tbody></table>
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<tr>
+<td style="padding:0px">
+<br/>
+<p style="text-align:right;font-size:small;">
+                  Feel free to steal this website's <a href="https://github.com/jonbarron/jonbarron_website">source code</a>. <strong>Do not</strong> scrape the HTML from this page itself, as it includes analytics tags that you do not want on your own website — use the github code instead. Also, consider using <a href="https://leonidk.com/">Leonid Keselman</a>'s <a href="https://github.com/leonidk/new_website">Jekyll fork</a> of this page.
                 </p>
-              </td>
-            </tr>
-          </tbody></table>
-        </td>
-      </tr>
-    </table>
-  </body>
+</td>
+</tr>
+</tbody></table>
+</body>
 </html>
